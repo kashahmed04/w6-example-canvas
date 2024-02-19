@@ -18,15 +18,16 @@ context.fillRect(0, 0, SIZE, SIZE)
 context.strokeStyle = 'black'
 context.lineWidth = 2
 context.beginPath()
-context.arc(60, 60, 45, 0, Math.PI / 2) //this starts from 0 (where is 0 usually I thought it was top left)**
-//and draws to pi/2 which is (wouldnt it be half a circle)**
+context.arc(60, 60, 45, 0, Math.PI / 2) //this starts from 0 for the starting angle
+//2pi is circle and pi is half circle and divide by 2 is half of a half of a circle
+//this is based on the unit circle so 0 starts at 0 from the unit circle (and it goes down becaues y is positive)
 context.stroke()
 
 context.strokeStyle = 'red'
 context.beginPath()
-//this starts from 0 and goes counterclockwise to pi/2 (isnt top left (0,0) and pi/2 half a circle**
+//this starts from 0 and goes counterclockwise
 context.arc(60, 60, 40, 0, Math.PI / 2, true) //true is going counterclockwise and nothing put there or false is clockwise
-//because clockwise is the default**
+//because clockwise is the default (yes)
 context.stroke()
 
 // ██████████████████████████████████████████████████████████████████████████████████████
@@ -36,18 +37,21 @@ context.stroke()
 context.strokeStyle = 'red'
 context.beginPath()
 context.moveTo(SIZE - 60, 60) //we move this to almost the end of the canvas and a bit lower because going down
-//for y is positive** (this is the starting blue point for moveto usually for arcTo or is it the point
-//that moves along the control point lines??)**
+//for y is positive (this is the starting blue point for moveto usually)
 context.arcTo(SIZE - 60, 120, SIZE - 120, 60, 15) //the first set of coorindates is the first control point,
-//the second set of coordinates is the second control point, the last number is the radius for how curved we want the line
-//to be**
+//the second set of coordinates is the second control point, and the last number is the size of the circle
+//we get a portion of a circle that is tangent to both lines and we have a portion of a circle and we are wedging it
+//between the two lines and if we have smaller raidus circle it gets closer to the lower red point but if its bigger circle radius
+//we get closer to the taller red point
+//starts from the blue point and draws the striaght line then the arc then ends between the two control points (the two
+//red ones)
 context.stroke()
 
 context.strokeStyle = 'orange'
 context.beginPath()
 context.moveTo(SIZE - 58, 60)
 context.arcTo(SIZE - 58, 120, SIZE - 120, 60, 10) //why does it get more curved as the radius decreases I thought
-//it would get more curved as the radius increased**
+//it would get more curved as the radius increased (based on the bottom control point)
 context.stroke()
 
 context.strokeStyle = 'green'
@@ -70,7 +74,7 @@ context.stroke()
 context.strokeStyle = 'black'
 context.beginPath()
 context.moveTo(60, 300) // the starting point (P0 in the animation)
-// prettier-ignore (this would make it one huge line if we did not put this line here for prettier right)**
+// prettier-ignore (this would make it one huge line if we did not put this line here for prettier right)
 context.bezierCurveTo(
   120,
   240, // the first control point (P1 in the animation)
@@ -78,8 +82,8 @@ context.bezierCurveTo(
   360, // the second control point (P2 in the animation)
   240,
   300, // the destination point (P3 in the animation)
-  //for arcto and beziercurveto do the control points connect in a line and the starting point (or moveto in arcto) is
-  //what draws the lines along those points**
+
+  //we drive a point along a point from our p0 to our other control points to draw the arc
 )
 context.stroke()
 
@@ -89,19 +93,20 @@ context.stroke()
 // middle right ellipse, showing:
 // "clockwise" ellipse in black
 // "counter-clockwise" ellipse in red
-//center posiiton, major radius, minor radius, starting stopping radians, and**
+//ellipse has 2 raidus and the major radius is the bigger one and the first one is the x radius and the second one
+//is the y radius (major would be radius x and minor would be radius y) (if we switched the radiusx and readius x it would be
+//tall and narrow)
 context.strokeStyle = 'black'
 context.lineWidth = 2
 context.beginPath()
-context.ellipse(480, 300, 65, 25, 0, 0, Math.PI / 2) //why do we make the rotation 0 if we rotate to make the ellipse**
+context.ellipse(480, 300, 65, 25, 0, 0, Math.PI / 2) //the rotation sets the roatation of the major axis
+//(football shaped ellipse and as we increase rotation it spins clockwise and we have it pointing in differen direction)**
 context.stroke()
 
 context.strokeStyle = 'red'
 context.beginPath()
-//the x and y is where we want to start drawing right why do we have a starting angle then**
-//why is the rotation 0 if we rotate**
 context.ellipse(480, 300, 60, 20, 0, 0, Math.PI / 2, true) //the true makes the ellipse go counterclockwise and
-//nothing or false makes the ellipse go clockwise**
+//nothing or false makes the ellipse go clockwise (yes)
 context.stroke()
 
 // ██████████████████████████████████████████████████████████████████████████████████████
@@ -110,26 +115,23 @@ context.stroke()
 // bottom center - showing curves of different controls
 // another animation : https://miro.medium.com/v2/resize:fit:480/format:webp/1*MTvJLHEDRpAcAFY25iQeww.gif
 // the only thing changing is the Y-coordinate of the control point
-// (1 fewer control point than bezier curve and it draws based on the green line and there are fewer construction lines**)
+// (1 fewer control point than bezier curve and it draws based on the green line and there are fewer construction lines)
 context.strokeStyle = 'red'
 context.beginPath()
-context.moveTo(260, 560)
-context.quadraticCurveTo(320, 460, 380, 560) //takes in two control points for the first 2 coorindates then
-//the second two number are the**
+context.moveTo(260, 560) //first x,y is p0
+context.quadraticCurveTo(320, 460, 380, 560) //p1 is the second pair and the, p2 is the third pair here for drawing the curve
 context.stroke()
 
 context.strokeStyle = 'orange'
 context.beginPath()
 context.moveTo(260, 560)
-context.quadraticCurveTo(320, 480, 380, 560) //the control points are what makes it more higher up because the contorl
-//points are farther away and the more farther away they are the more longer the curve will be**
-//when the control points are more close it makes it more curved but smaller curve**
+context.quadraticCurveTo(320, 480, 380, 560) //further control point the more strech there is but the closer the lines are
+//the more like a line it will be
 context.stroke()
 
 context.strokeStyle = 'green'
 context.beginPath()
-context.moveTo(260, 560) //move to this point then start drawing with the quadraticcurveto**
-//we only use lineto for the lines after the moveto**
+context.moveTo(260, 560)
 context.quadraticCurveTo(320, 500, 380, 560)
 context.stroke()
 
