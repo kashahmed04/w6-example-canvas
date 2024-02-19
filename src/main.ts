@@ -3,6 +3,7 @@ import './styles/styles.css'
 
 //how does it know to make background purple**
 //makes the whole abckground purple but we change whatever is in the canvas by drawing the transparent purple suqares**
+//what does it mean it starts off as black transparent pixels I thought it was white for canavs if we draw nothign on it**
 const SIZE = 600
 const canvas = document.getElementById('canvas') as HTMLCanvasElement
 
