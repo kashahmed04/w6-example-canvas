@@ -1,8 +1,8 @@
 # w6-example-canvas
 
-## canvas-05
+## canvas-06
 
-Details on drawing images.
+Details on clearing the canvas.
 
 |                                                                        **Branch** | **Description** |
 | --------------------------------------------------------------------------------: | :-------------- |
