@@ -58,7 +58,7 @@ context.textBaseline = 'top'
 context.fillText('Hi', 320, 240)
 
 // custom fontface
-context.font = '48px "AmaticSC"'
+context.font = '48px AmaticSC'
 context.textBaseline = 'alphabetic'
 // here's what it looks like if you try to use a custom fontface before it loads
 context.fillText('AmaticSC before load', 20, 360)
