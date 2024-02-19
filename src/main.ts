@@ -17,18 +17,21 @@ context.fillStyle = 'red'
 context.beginPath()
 context.moveTo(60, 60)
 context.lineTo(60, 120)
-context.lineTo(120, 120) //why is there 3 lineto if we have 4 sides for square**
+context.lineTo(120, 120) //why is there 3 lineto if we have 4 sides for square (the moveto prepares us to start
+//the shape and the lineto goes down left edge, then bottom, then top of square then we close the path
+//and we close the path from where we are to the start)
 context.lineTo(120, 60)
-context.closePath() //closes the shape up so we can fill it on the next line within the lines**
+context.closePath() //closes the shape up so we can fill it on the next line within the lines (figures our from where
+//we are to go back to the start)(it will be a straight line to go back even if it looks weird)
 context.fill()
-context.stroke() //stoke makes the whole shape show up then or just the color inside the shape**
-//when we say stroke everything gets drawn and filled in right**
+context.stroke() //stoke makes the whole shape show up then or just the color inside the shape
+//when we say stroke everything gets drawn and filled in right (yes)
 
 // top center triangle
 context.fillStyle = 'green'
 context.beginPath()
 context.moveTo(300, 60)
-context.lineTo(265, 120) //why is there only 2 lineto() if we have 3 sides**
+context.lineTo(265, 120)
 context.lineTo(335, 120)
 context.closePath()
 context.fill()
@@ -38,7 +41,7 @@ context.stroke()
 context.fillStyle = 'blue'
 context.beginPath()
 context.moveTo(520, 60)
-context.lineTo(510, 80) //why is there 7 lineto if we have 8 sides**
+context.lineTo(510, 80)
 context.lineTo(480, 90)
 context.lineTo(510, 100)
 context.lineTo(520, 120)
@@ -50,7 +53,7 @@ context.fill()
 context.stroke()
 
 // overlapping squares in the middle
-// all this just to show off the 'nonzero' (default) vs 'evenodd' (alternate) fill rules**
+// all this just to show off the 'nonzero' (default) vs 'evenodd' (alternate) fill rules
 context.fillStyle = 'green'
 context.beginPath()
 context.moveTo(60, 300)
@@ -64,8 +67,9 @@ context.lineTo(80, 380)
 context.lineTo(140, 380)
 context.lineTo(140, 320)
 context.closePath()
-context.fill('nonzero') // fills the path, regardless of overlap (does it matter which shape we put it on
-//it just has to be a shape that overlaps)**
+context.fill('nonzero') // fills the path, regardless of overlap (the canvas is the whole
+//canvas so it accounts for eveerything that overlaps)
+//the even odd overrides it for everything that overlaps then****
 context.stroke()
 
 context.fillStyle = 'orange'
@@ -82,9 +86,8 @@ context.lineTo(340, 380)
 context.lineTo(340, 320)
 context.closePath()
 context.fill('evenodd') // fills the path, odd overlaps are filled, even overlaps are not
-//(0 is even here so it's not filled)(why is the rectangle on the outside filled then because there is no overlap
-//with the shapes making it 0 not 1)**
-//(2 is even for the inner rectangle because 2 rectangles overlap so it does not get filled)**
+//even layers (2) for the squares so it does not fill in but for odd it would be 1 (canvas is 0) so its filled
+//and a shape ontop of a shape ontop of a shape is 3 so it would be filled
 context.stroke()
 
 // combining arc and lineTo to make a heart
@@ -92,8 +95,7 @@ context.fillStyle = 'red'
 context.beginPath()
 context.arc(480, 300, 30, Math.PI, 0)
 context.arc(510, 330, 30, 1.5 * Math.PI, Math.PI / 2)
-context.lineTo(450, 360) //I know there are two arcs at the top corners, but why is there only 1 lineto I thought
-//there should have been 2 for each side**
+context.lineTo(450, 360) //draws from the line we just drew to the begginning of the first arc we drew
 context.closePath()
 context.fill()
 context.stroke()
