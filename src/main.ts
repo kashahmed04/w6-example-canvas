@@ -13,7 +13,7 @@ context.fillRect(0, 0, SIZE, SIZE)
 
 const image = new Image()
 image.addEventListener('load', () => {
-  context.drawImage(image, 150, 40, 700, 700, 10, 10, 580, 580)
+  context.drawImage(image, 150, 40, 700, 700, 10, 10, 580, 580) //what do all the numbers represent**
 })
 image.src = './assets/squidward.webp'
 
@@ -23,6 +23,7 @@ const alphaButton = document.getElementById('alpha') as HTMLButtonElement
 
 clearButton.addEventListener('click', () => {
   // clearing sets pixels in a rectangle to black, transparent
+  //what does it mean black it's not black on the screen (does it mean transparent)**
   context.clearRect(0, 0, 300, 600)
 })
 
@@ -31,6 +32,9 @@ fillButton.addEventListener('click', () => {
   context.fillStyle = 'rgb(255, 255, 255)'
   context.fillRect(300, 0, 300, 300)
 })
+
+//the above 2 only work for one click but the last one works for multiple clicks because
+//it changes opacity and makes it more transparent each time we click by 0.1 for the alpha value**
 
 alphaButton.addEventListener('click', () => {
   // this fills with white, at 10% transparency (for a fade/ghost effect)
