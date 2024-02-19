@@ -1,8 +1,8 @@
 # w6-example-canvas
 
-## canvas-01
+## canvas-02
 
-Details on line drawing, particularly about the coordinate system and anti-aliasing.
+Details on curve drawing.
 
 |                                                                        **Branch** | **Description** |
 | --------------------------------------------------------------------------------: | :-------------- |
