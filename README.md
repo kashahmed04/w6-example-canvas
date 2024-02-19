@@ -1,8 +1,8 @@
 # w6-example-canvas
 
-Canvas - drawing some pixels.
+## canvas-01
 
-To run : `npm install` and `npm start` then visit `http://localhost:5173`
+Details on line drawing, particularly about the coordinate system and anti-aliasing.
 
 |                                                                        **Branch** | **Description** |
 | --------------------------------------------------------------------------------: | :-------------- |
