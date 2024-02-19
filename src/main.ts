@@ -2,7 +2,7 @@ import './styles/reset.css'
 import './styles/styles.css'
 
 //how does it know to make background purple (the styles has purple as the background for the html element)
-//why wouldnt we do it from the body**
+//why wouldnt we do it from the body****
 //makes the whole abckground purple but we change whatever is in the canvas by drawing the transparent purple suqares
 //what does it mean it starts off as black transparent pixels I thought it was white for canavs if we draw nothign on it
 //the default is black and transparent and we drew white for the fillstyle so if we dont specify a fillstyle then
@@ -16,7 +16,7 @@ canvas.height = SIZE
 // setting the size with CSS scales/resizes the display dimensions of the canvas (
 // (CSS will ::NOT:: change the pixel dimensions) (makes it pixilated or look weird because it does not take away
 //or add pixels when we specify dimensions, it shrinks it grows the current pixel size we have (for CSS if we adjust
-//pixel size)**
+//pixel size)
 
 // like the AudioContext, we have a CanvasRenderingContext2D
 //we will stick with 2D for now but may do 3D
@@ -25,20 +25,20 @@ const context = canvas.getContext('2d') as CanvasRenderingContext2D
 // solid white fill
 context.fillStyle = 'rgb(255, 255, 255)'
 // draw the white borders
-//start from (0,0)(top left), then go the full width and make the height 10 (how thick the white box should be)**
+//start from (0,0)(top left), then go the full width and make the height 10 (how thick the white box should be)****
 context.fillRect(0, 0, SIZE, 10) //(top bar)
 
 //start from a bit to the left of the end of the canvas, and a bit below for the y-axis,
 //then the width is 10 (how thick the bar is) then go all the way down for the height but stop 20 pixels before
-//the end (600 pixels is total canvas width and height))**
+//the end (600 pixels is total canvas width and height))****
 context.fillRect(SIZE - 10, 10, 10, SIZE - 20) //(right bar)
 
 //start at 0 for the x, start 10 below for y, then make the bar 10 thick for the width and for the
-//height stop 20 pixels before the end of the canvas (the 600)**
+//height stop 20 pixels before the end of the canvas (the 600)****
 context.fillRect(0, 10, 10, SIZE - 20) //(left bar)
 
 //start at 0 for the x, the y is all the way down but 10 pixels before the 600, make the go the whole width
-//and make the bar 10 pixels thick for the height since the bar is horizontal**
+//and make the bar 10 pixels thick for the height since the bar is horizontal****
 context.fillRect(0, SIZE - 10, SIZE, 10) //(bottom bar)
 
 // semi-transparent white fill
@@ -128,15 +128,6 @@ we dont really have a purple canvas its just white and transparent white but whe
 whole screen it changes the canvas**
 
 we have a loop that gives us the reectangles to draw them with the starting cororidnates (x,y) and how big the make then (width and height)**
-
-
-
-
-
-
-
-
-
 
 
 CANVAS LINES:
