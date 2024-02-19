@@ -19,6 +19,8 @@ context.fillStyle = 'rgb(255, 255, 255)'
 // draw the white background for the canvas**
 context.fillRect(0, 0, SIZE, SIZE)
 
+//how does it know to make background purple**
+
 // Yes, I absolutely could have written these with a loop.
 // But I didn't, to be explicit about what values are being passed to the draw methods.
 // (in other words, making it easier to follow the example without having to math out the values)
