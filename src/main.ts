@@ -13,7 +13,8 @@ canvas.height = SIZE
 // like the AudioContext, we have a CanvasRenderingContext2D
 const context = canvas.getContext('2d') as CanvasRenderingContext2D
 
-// solid white fill
+// solid white fill of the canvas since context is the canvas renderer responsible for showing everything on the screen**
+//we dont use canvas here because it makes the actual canvas itself and does not rednder our drawings**
 context.fillStyle = 'rgb(255, 255, 255)'
 // draw the white background
 context.fillRect(0, 0, SIZE, SIZE)
@@ -173,3 +174,28 @@ context.beginPath()
 context.moveTo(120.5, 230)
 context.lineTo(120.5, 280)
 context.stroke()
+
+// CANVAS LINES:
+
+// (0,0) is the top left of the canvas and when we draw a line if we go from (3,1) to (3,5) it will go by half of a pixel
+// so we say go 2 or**
+
+// we set the stoke style (color), the linewidth (thickness of line), beginpath()(we are about to start drawing a path then we can do
+// series of moveto() and lineto() afterwards)** moveto()(moves position of pen without touching paper) lineto()(put pen down to start drawing)**
+// the moveto and lineto dont draw automatically so we do a stroke afterwards at the very end to actually draw a shape**
+
+// context.strokeStyle = 'black'
+// context.lineWidth = 1
+// context.beginPath()
+// context.moveTo(20, 20)
+// context.lineTo(20, 70)
+// context.stroke()
+
+// EXAMPLE lines:
+
+// for first row of lines the first line uses an odd number line width on whole number pixels**
+// the second row of lines line makes the offset with half the linewidth**
+// for the third row of lines we have even width lines because its half pixel location**
+// for the fourth row lines**
+
+// we will the entire canvas then stroke as 1 then the width and we use the same pattern for all the blocks
