@@ -2,6 +2,7 @@ import './styles/reset.css'
 import './styles/styles.css'
 
 //how does it know to make background purple**
+//makes the whole abckground purple but we change whatever is in the canvas by drawing the transparent purple suqares**
 const SIZE = 600
 const canvas = document.getElementById('canvas') as HTMLCanvasElement
 
