@@ -100,7 +100,7 @@ context.strokeStyle = 'black'
 context.lineWidth = 2
 context.beginPath()
 context.ellipse(480, 300, 65, 25, 0, 0, Math.PI / 2) //the rotation sets the roatation of the major axis
-//(football shaped ellipse and as we increase rotation it spins clockwise and we have it pointing in differen direction)**
+//(football shaped ellipse and as we increase rotation it spins clockwise and we have it pointing in differen direction)****
 context.stroke()
 
 context.strokeStyle = 'red'
