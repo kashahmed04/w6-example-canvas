@@ -1,8 +1,8 @@
 # w6-example-canvas
 
-## canvas-04
+## canvas-05
 
-Details on drawing text.
+Details on drawing images.
 
 |                                                                        **Branch** | **Description** |
 | --------------------------------------------------------------------------------: | :-------------- |

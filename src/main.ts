@@ -11,64 +11,34 @@ const context = canvas.getContext('2d') as CanvasRenderingContext2D
 context.fillStyle = 'rgb(255, 255, 255)'
 context.fillRect(0, 0, SIZE, SIZE)
 
-// filling text
-context.fillStyle = 'black'
-context.font = '48px Arial'
-context.fillText('Hello, canvas.', 20, 60)
+// holds the image data
+const image = new Image()
 
-// stroking text
-context.lineWidth = 2
-context.strokeText('Hello, canvas.', 20, 120)
+// listens for the image to load, and tells us what to do once it does
+// (note, this will never fire ... until after image.src is set (see L44))
+image.addEventListener('load', () => {
+  // draw it small
+  context.drawImage(
+    image, // source data
+    20, // x-coord
+    20, // y-coord
+    250, // width
+    190, // height
+  )
 
-// lots of text
-// (But also, don't render this much text in the canvas! It's not accessible!)
-context.font = '24px Arial'
-context.fillText(
-  'Cheese on toast airedale the big cheese. Danish fontina cheesy grin airedale danish fontina taleggio the big cheese macaroni cheese port-salut. Edam fromage lancashire feta caerphilly everyone loves chalk and cheese brie. Red leicester parmesan cheese and biscuits cheesy feet blue castello cheesecake fromage frais smelly cheese.',
-  20,
-  180,
-  560,
-)
-
-// different baselines
-context.strokeStyle = 'red'
-context.lineWidth = 1
-context.beginPath()
-context.moveTo(10.5, 240.5)
-context.lineTo(589.5, 240.5)
-context.stroke()
-
-context.font = '48px Arial'
-context.textBaseline = 'alphabetic' // the default
-context.fillText('Hi', 20, 240)
-
-context.textBaseline = 'bottom'
-context.fillText('Hi', 80, 240)
-
-context.textBaseline = 'hanging'
-context.fillText('Hi', 140, 240)
-
-context.textBaseline = 'ideographic'
-context.fillText('Hi', 200, 240)
-
-context.textBaseline = 'middle'
-context.fillText('Hi', 260, 240)
-
-context.textBaseline = 'top'
-context.fillText('Hi', 320, 240)
-
-// custom fontface
-context.font = '48px "AmaticSC"'
-context.textBaseline = 'alphabetic'
-// here's what it looks like if you try to use a custom fontface before it loads
-context.fillText('AmaticSC before load', 20, 360)
-
-// create a custom FontFace
-const myFont = new FontFace('AmaticSC', 'url(./assets/AmaticSC-Regular.ttf)')
-// wait until the font actually loads, then...
-myFont.load().then((font) => {
-  // register the font with the document
-  document.fonts.add(font)
-  // and after waiting, actually draw the text
-  context.fillText('AmaticSC after load', 20, 420)
+  // draw a subsection of it
+  context.drawImage(
+    image, // source data
+    380, // x of source
+    270, // y of source
+    300, // width of source
+    120, // height of source
+    20, // x of destination
+    270, // y of destination
+    300, // width of destination
+    120, // height of destination
+  )
 })
+
+// set the .src attribute, officially starting the image load
+image.src = './assets/squidward.webp'
