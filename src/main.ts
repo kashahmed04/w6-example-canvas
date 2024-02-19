@@ -59,6 +59,7 @@ for (let x = 0; x < 10; x++) {
     if (x % 2 !== y % 2) {
       context.fillRect(
         //how to know how big to make rectanlges and where to draw them**
+        //does each rectangle start on the bottom left or where does it start**
         10 + x * squareSize,
         10 + y * squareSize,
         squareSize,
