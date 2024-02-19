@@ -11,83 +11,64 @@ const context = canvas.getContext('2d') as CanvasRenderingContext2D
 context.fillStyle = 'rgb(255, 255, 255)'
 context.fillRect(0, 0, SIZE, SIZE)
 
-// top left square
+// filling text
+context.fillStyle = 'black'
+context.font = '48px Arial'
+context.fillText('Hello, canvas.', 20, 60)
+
+// stroking text
 context.lineWidth = 2
-context.fillStyle = 'red'
+context.strokeText('Hello, canvas.', 20, 120)
+
+// lots of text
+// (But also, don't render this much text in the canvas! It's not accessible!)
+context.font = '24px Arial'
+context.fillText(
+  'Cheese on toast airedale the big cheese. Danish fontina cheesy grin airedale danish fontina taleggio the big cheese macaroni cheese port-salut. Edam fromage lancashire feta caerphilly everyone loves chalk and cheese brie. Red leicester parmesan cheese and biscuits cheesy feet blue castello cheesecake fromage frais smelly cheese.',
+  20,
+  180,
+  560,
+)
+
+// different baselines
+context.strokeStyle = 'red'
+context.lineWidth = 1
 context.beginPath()
-context.moveTo(60, 60)
-context.lineTo(60, 120)
-context.lineTo(120, 120)
-context.lineTo(120, 60)
-context.closePath()
-context.fill()
+context.moveTo(10.5, 240.5)
+context.lineTo(589.5, 240.5)
 context.stroke()
 
-// top center triangle
-context.fillStyle = 'green'
-context.beginPath()
-context.moveTo(300, 60)
-context.lineTo(265, 120)
-context.lineTo(335, 120)
-context.closePath()
-context.fill()
-context.stroke()
+context.font = '48px Arial'
+context.textBaseline = 'alphabetic' // the default
+context.fillText('Hi', 20, 240)
 
-// top right starburst
-context.fillStyle = 'blue'
-context.beginPath()
-context.moveTo(520, 60)
-context.lineTo(510, 80)
-context.lineTo(480, 90)
-context.lineTo(510, 100)
-context.lineTo(520, 120)
-context.lineTo(530, 100)
-context.lineTo(560, 90)
-context.lineTo(530, 80)
-context.closePath()
-context.fill()
-context.stroke()
+context.textBaseline = 'bottom'
+context.fillText('Hi', 80, 240)
 
-// overlapping squares in the middle
-// all this just to show off the 'nonzero' (default) vs 'evenodd' (alternate) fill rules
-context.fillStyle = 'green'
-context.beginPath()
-context.moveTo(60, 300)
-context.lineTo(60, 360)
-context.lineTo(120, 360)
-context.lineTo(120, 300)
-context.closePath()
+context.textBaseline = 'hanging'
+context.fillText('Hi', 140, 240)
 
-context.moveTo(80, 320)
-context.lineTo(80, 380)
-context.lineTo(140, 380)
-context.lineTo(140, 320)
-context.closePath()
-context.fill('nonzero') // fills the path, regardless of overlap
-context.stroke()
+context.textBaseline = 'ideographic'
+context.fillText('Hi', 200, 240)
 
-context.fillStyle = 'orange'
-context.beginPath()
-context.moveTo(260, 300)
-context.lineTo(260, 360)
-context.lineTo(320, 360)
-context.lineTo(320, 300)
-context.closePath()
+context.textBaseline = 'middle'
+context.fillText('Hi', 260, 240)
 
-context.moveTo(280, 320)
-context.lineTo(280, 380)
-context.lineTo(340, 380)
-context.lineTo(340, 320)
-context.closePath()
-context.fill('evenodd') // fills the path, odd overlaps are filled, even overlaps are not
-context.stroke()
+context.textBaseline = 'top'
+context.fillText('Hi', 320, 240)
 
-// combining arc and lineTo to make a heart
-context.fillStyle = 'red'
-context.beginPath()
-context.arc(480, 300, 30, Math.PI, 0)
-context.arc(510, 330, 30, 1.5 * Math.PI, Math.PI / 2)
-context.lineTo(450, 360)
-context.closePath()
-context.fill()
-context.stroke()
+// custom fontface
+context.font = '48px "AmaticSC"'
+context.textBaseline = 'alphabetic'
+// here's what it looks like if you try to use a custom fontface before it loads
+context.fillText('AmaticSC before load', 20, 360)
+
+// create a custom FontFace
+const myFont = new FontFace('AmaticSC', 'url(./assets/AmaticSC-Regular.ttf)')
+// wait until the font actually loads, then...
+myFont.load().then((font) => {
+  // register the font with the document
+  document.fonts.add(font)
+  // and after waiting, actually draw the text
+  context.fillText('AmaticSC after load', 20, 420)
+})

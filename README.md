@@ -1,8 +1,8 @@
 # w6-example-canvas
 
-## canvas-03
+## canvas-04
 
-Details on drawing shapes / fills.
+Details on drawing text.
 
 |                                                                        **Branch** | **Description** |
 | --------------------------------------------------------------------------------: | :-------------- |
