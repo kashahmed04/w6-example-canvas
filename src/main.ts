@@ -8,30 +8,57 @@ const canvas = document.getElementById('canvas') as HTMLCanvasElement
 canvas.width = SIZE
 canvas.height = SIZE
 // setting the size with CSS scales/resizes the display dimensions of the canvas (
-// (CSS will ::NOT:: change the pixel dimensions)
+// (CSS will ::NOT:: change the pixel dimensions) (makes it pixilated or look weird because it does not take away
+//or add pixels when we specify dimensions, it shrinks it grows the current pixel size we have (for CSS if we adjust
+//pixel size)**
 
 // like the AudioContext, we have a CanvasRenderingContext2D
+//will we do 2D only here or will we also do 3D (would the string say "3d" and it would be CanvasRenderingContext3D)**
 const context = canvas.getContext('2d') as CanvasRenderingContext2D
 
 // solid white fill
 context.fillStyle = 'rgb(255, 255, 255)'
 // draw the white borders
-context.fillRect(0, 0, SIZE, 10)
-context.fillRect(SIZE - 10, 10, 10, SIZE - 20)
-context.fillRect(0, 10, 10, SIZE - 20)
-context.fillRect(0, SIZE - 10, SIZE, 10)
+//start from (0,0)(top left), then go the full width and make the height 10 (how thick the white box should be)**
+context.fillRect(0, 0, SIZE, 10) //(top bar)
+
+//start from a bit to the left of the end of the canvas, and a bit below for the y-axis,
+//then the width is 10 (how thick the bar is) then go all the way down for the height but stop 20 pixels before
+//the end (600 pixels is total canvas width and height))**
+context.fillRect(SIZE - 10, 10, 10, SIZE - 20) //(right bar)
+
+//start at 0 for the x, start 10 below for y, then make the bar 10 thick for the width and for the
+//height stop 20 pixels before the end of the canvas (the 600)**
+context.fillRect(0, 10, 10, SIZE - 20) //(left bar)
+
+//start at 0 for the x, the y is all the way down but 10 pixels before the 600, make the go the whole width
+//and make the bar 10 pixels thick for the height since the bar is horizontal**
+context.fillRect(0, SIZE - 10, SIZE, 10) //(bottom bar)
 
 // semi-transparent white fill
+//the whole canvas starts as white with no transparency but when we
+//draw the actual rectanngles with the loop below thats what makes it transparent**
+//the fillstyle is for only the shapes we draw after we assign it a color (same for stroke but those are for lines only)**
 context.fillStyle = 'rgba(255, 255, 255, 0.25)'
 
 // size of each square, accounting for the borders
+//we do minus 20 because we have 10 pixels wide for each border making it 20 for 2 sides**
+//and we divide by 10 because**
 const squareSize = (SIZE - 20) / 10
 
+//this starts at x = 0, then goes to the right for each column
+//for the y and checks if they are both not equal for the mod (0 for the first
+//iteration) and if they are not equal, fill the rectangle with the transparent color of white
+//so we see the square pattern on the canvas**
+//0 mod 2 is baically 0 / 2 but no remainder so its 0**
+//1 mod 2 is basically 1/2 which is 1 for the mod (how is it one if we get 0.5 from 1/2 shouldnt the reminader be
+//1.5)**
 for (let x = 0; x < 10; x++) {
   for (let y = 0; y < 10; y++) {
     // draw a checkerboard pattern
     if (x % 2 !== y % 2) {
       context.fillRect(
+        //how to know how big to make rectanlges and where to draw them**
         10 + x * squareSize,
         10 + y * squareSize,
         squareSize,
@@ -41,43 +68,60 @@ for (let x = 0; x < 10; x++) {
   }
 }
 
-
 /*
 CANVAS API:
 homework 2 is going to be announced on Wednesday or Friday
 
 HTML CANVAS ELEMENT:
+
 use drawing methods to draw
 we add a canvas tag to HTML
+ <canvas id="canvas">
+      (A text description of what the canvas shows, for accessability purposes.)
+  </canvas>
+
 sleect canvas tag with JS or TS
+const canvas = document.getElementById('canvas') as HTMLCanvasElement
+
 get rendering context (like audio context that was mananger of audio system and we have rendering system for the canvas)
-we use rendering context we made to draw things to the canvas** (how to make rendering system)**
+we use rendering context to be able to draw things on the canvas**
+const context = canvas.getContext('2d') as CanvasRenderingContext2D
+
+then we use the rendering context to draw on the canvas by doing context. before doing a drawing (we do
+the context. for anything we draw that goes on the canvas right)**
+
+
+
 
 CANVAS REFERENCES:
 first link is guidede tour of canvas itself
 the second link is the API links informtion and listing of properties and metods and how to use them as well as examples
 the third link is a web textbook for canvas and what we can do with canvas
-the list link is a bunch of third party libaries ontop of canvas to make it easier to work with canvas**
+the last link is a bunch of third party libaries ontop of canvas to make it easier to work with canvas
 
 CANVAS ATTRIBUTES:
 we can set width and height and it contorls the pixel dimaneions we can draw to and we can set it in the html tag
-or we can do it from JS or TS, but not from CSS because it controls the display of the canvas (if we have a 200x200 canvas, if we
-size it with CSS it does not give us more pixels it just squishes or exapnds the current pixels we have in the html)**
+or we can do it from JS or TS, but not from CSS because it controls the display of the canvas (if we have a 200x200 canvas
+we set in the html or js or ts then, if we resize it with CSS it does not give us more pixels it just squishes
+or exapnds the current pixels we had)**
 we can use CSS to position and size our canvas but if we make it small or big it may look weird (pixiliated)**
 
-canvas starts as black transparanet rectanles then we can draw on it**
+canvas starts as black transparanet rectangles then we can draw on it (I thought it was white)**
+
+drawings are based on pixels which are then displayed onto the screen for us as we specify drawings
+for dimensions**
 
 we have a 600x600 purple canvas and a square pattern and for the code in the index.html we have a canvas element
 with an id and put text inside of the tag just incase the browser cant render it or the user is using a screen reader**
-in the main.ts we have a size so we can resize as we go and we set the width and height**
-have a context varible tp get the context as 2D and that gives us the canvas context renderer**
-we set the fil style and we can make it rgb, words, etc. and when we will in pixels thats the color we want to use**
-we then make rectangles then we change the color to make the swuares transparent and draws more squres**
+in the main.ts we have a size so we can resize (we can resize only in HTML and CSS)** as we go and we set the width and height**
+we set the fill style and we can make it rgb, words, etc. and based on the rectanlgle it will change the
+style to transparent in our case**
+we then make rectangles then we change the color to make the squares transparent**
 
-we dont really have a ourple canvas its just white and transparent white but when we change the background of the
+we dont really have a purple canvas its just white and transparent white but when we change the background of the
 whole screen it changes the canvas**
 
-we have a loop that gives us the reectangles to draw them with the stating cororidnates**
+we have a loop that gives us the reectangles to draw them with the starting cororidnates (x,y) and how big the make then (width and height)**
 
 CANVAS LINES:
 
