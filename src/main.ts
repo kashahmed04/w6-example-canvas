@@ -16,7 +16,7 @@ const context = canvas.getContext('2d') as CanvasRenderingContext2D
 // solid white fill of the canvas since context is the canvas renderer responsible for showing everything on the screen**
 //we dont use canvas here because it makes the actual canvas itself and does not rednder our drawings**
 context.fillStyle = 'rgb(255, 255, 255)'
-// draw the white background
+// draw the white background for the canvas**
 context.fillRect(0, 0, SIZE, SIZE)
 
 // Yes, I absolutely could have written these with a loop.
