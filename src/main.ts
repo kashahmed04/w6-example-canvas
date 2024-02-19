@@ -1,9 +1,12 @@
 import './styles/reset.css'
 import './styles/styles.css'
 
-//how does it know to make background purple**
-//makes the whole abckground purple but we change whatever is in the canvas by drawing the transparent purple suqares**
-//what does it mean it starts off as black transparent pixels I thought it was white for canavs if we draw nothign on it**
+//how does it know to make background purple (the styles has purple as the background for the html element)
+//why wouldnt we do it from the body**
+//makes the whole abckground purple but we change whatever is in the canvas by drawing the transparent purple suqares
+//what does it mean it starts off as black transparent pixels I thought it was white for canavs if we draw nothign on it
+//the default is black and transparent and we drew white for the fillstyle so if we dont specify a fillstyle then
+//we get black
 const SIZE = 600
 const canvas = document.getElementById('canvas') as HTMLCanvasElement
 
@@ -16,7 +19,7 @@ canvas.height = SIZE
 //pixel size)**
 
 // like the AudioContext, we have a CanvasRenderingContext2D
-//will we do 2D only here or will we also do 3D (would the string say "3d" and it would be CanvasRenderingContext3D)**
+//we will stick with 2D for now but may do 3D
 const context = canvas.getContext('2d') as CanvasRenderingContext2D
 
 // solid white fill
@@ -40,29 +43,27 @@ context.fillRect(0, SIZE - 10, SIZE, 10) //(bottom bar)
 
 // semi-transparent white fill
 //the whole canvas starts as white with no transparency but when we
-//draw the actual rectanngles with the loop below thats what makes it transparent**
-//the fillstyle is for only the shapes we draw after we assign it a color (same for stroke but those are for lines only)**
+//draw the actual rectanngles with the loop below thats what makes it transparent (yes)
+//the fillstyle is for only the shapes we draw after we assign it a color
+//(same for stroke but those are for lines only)(yes)
+//we can use fillstyle with shapes and text as well
 context.fillStyle = 'rgba(255, 255, 255, 0.25)'
 
-// size of each square, accounting for the borders
-//we do minus 20 because we have 10 pixels wide for each border making it 20 for 2 sides**
-//and we divide by 10 because**
-const squareSize = (SIZE - 20) / 10
+// size of each square, accounting for the borders on both sides
+//we do minus 20 because we have 10 pixels wide for each border making it 20 for 2 sides
+const squareSize = (SIZE - 20) / 10 //(we divide by 10 because its a 10x10 board)
 
-//this starts at x = 0, then goes to the right for each column
-//for the y and checks if they are both not equal for the mod (0 for the first
-//iteration) and if they are not equal, fill the rectangle with the transparent color of white
-//so we see the square pattern on the canvas**
-//0 mod 2 is baically 0 / 2 but no remainder so its 0**
-//1 mod 2 is basically 1/2 which is 1 for the mod (how is it one if we get 0.5 from 1/2 shouldnt the reminader be
-//1.5)**
+//0 mod 2 is baically 0 / 2 but no remainder so its 0
+//1 mod 2 is 2 goes into 1 0 times so its 1 left over (how many times does the right number go into the left number
+//and that remainder)
 for (let x = 0; x < 10; x++) {
   for (let y = 0; y < 10; y++) {
+    //goes down the rows and if the modulo is not equal (0) then we make a transparent square
     // draw a checkerboard pattern
     if (x % 2 !== y % 2) {
       context.fillRect(
-        //how to know how big to make rectanlges and where to draw them**
-        //does each rectangle start on the bottom left or where does it start**
+        //we are shifting everything over by 10 pixels to the right and 10 pixels down
+        //and it starts from within the border that way and not outside the border
         10 + x * squareSize,
         10 + y * squareSize,
         squareSize,
@@ -88,11 +89,11 @@ sleect canvas tag with JS or TS
 const canvas = document.getElementById('canvas') as HTMLCanvasElement
 
 get rendering context (like audio context that was mananger of audio system and we have rendering system for the canvas)
-we use rendering context to be able to draw things on the canvas**
+we use rendering context to be able to draw things on the canvas
 const context = canvas.getContext('2d') as CanvasRenderingContext2D
 
 then we use the rendering context to draw on the canvas by doing context. before doing a drawing (we do
-the context. for anything we draw that goes on the canvas right)**
+the context. for anything we draw that goes on the canvas right)
 
 
 
@@ -107,13 +108,14 @@ CANVAS ATTRIBUTES:
 we can set width and height and it contorls the pixel dimaneions we can draw to and we can set it in the html tag
 or we can do it from JS or TS, but not from CSS because it controls the display of the canvas (if we have a 200x200 canvas
 we set in the html or js or ts then, if we resize it with CSS it does not give us more pixels it just squishes
-or exapnds the current pixels we had)**
-we can use CSS to position and size our canvas but if we make it small or big it may look weird (pixiliated)**
+or exapnds the current pixels we had)
+we can use CSS to position and size our canvas but if we make it small or big it may look weird (pixiliated)
 
-canvas starts as black transparanet rectangles then we can draw on it (I thought it was white)**
+width and height with JS changes the number of pixels in the canvas but with CSS it just scales or resizes and changes
+the way its displayed without changing pixel dimensions
 
 drawings are based on pixels which are then displayed onto the screen for us as we specify drawings
-for dimensions**
+for dimensions (yes)
 
 we have a 600x600 purple canvas and a square pattern and for the code in the index.html we have a canvas element
 with an id and put text inside of the tag just incase the browser cant render it or the user is using a screen reader**
@@ -126,6 +128,16 @@ we dont really have a purple canvas its just white and transparent white but whe
 whole screen it changes the canvas**
 
 we have a loop that gives us the reectangles to draw them with the starting cororidnates (x,y) and how big the make then (width and height)**
+
+
+
+
+
+
+
+
+
+
 
 CANVAS LINES:
 
@@ -143,7 +155,7 @@ the second row of lines line makes the ofset with half the linewidth**
 for the third row of lines we have even width lines because its half pixel location**
 for the fourth row lines**
 
-we will the entire canvas then stroke as 1 then the width and we use the same pattern for all the blocks
+we will the entire canvas then stroke as 1 then the width and we use the same pattern for all the block
 
 CANVAS CURVES:
 
