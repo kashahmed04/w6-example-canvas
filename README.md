@@ -1,8 +1,8 @@
 # w6-example-canvas
 
-## canvas-02
+## canvas-03
 
-Details on curve drawing.
+Details on drawing shapes / fills.
 
 |                                                                        **Branch** | **Description** |
 | --------------------------------------------------------------------------------: | :-------------- |
