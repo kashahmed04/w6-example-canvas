@@ -25,6 +25,9 @@ context.fillRect(0, 0, SIZE, SIZE)
 // But I didn't, to be explicit about what values are being passed to the draw methods.
 // (in other words, making it easier to follow the example without having to math out the values)
 
+//go over all types of strokes and what do the width strokes mean (on the slides as well about the width of the strokes)**
+//which stroke widths are usually the best to use or commonly used**
+
 // The first series has odd-width strokes on whole-number pixel coordinates
 context.strokeStyle = 'black'
 context.lineWidth = 1
@@ -199,5 +202,3 @@ context.stroke()
 // the second row of lines line makes the offset with half the linewidth**
 // for the third row of lines we have even width lines because its half pixel location**
 // for the fourth row lines**
-
-// we will the entire canvas then stroke as 1 then the width and we use the same pattern for all the blocks
