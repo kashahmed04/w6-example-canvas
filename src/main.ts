@@ -1,6 +1,7 @@
 import './styles/reset.css'
 import './styles/styles.css'
 
+//how does it know to make background purple**
 const SIZE = 600
 const canvas = document.getElementById('canvas') as HTMLCanvasElement
 
