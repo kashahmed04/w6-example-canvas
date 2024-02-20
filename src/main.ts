@@ -8,32 +8,42 @@ canvas.height = SIZE
 
 const context = canvas.getContext('2d') as CanvasRenderingContext2D
 
-context.fillStyle = 'rgb(255, 255, 255)'
-context.fillRect(0, 0, SIZE, SIZE)
+// type to hold points
+interface Point {
+  x: number
+  y: number
+}
+// tracking the last known mouse position
+const mouse: Point = { x: 0, y: 0 }
 
-const image = new Image()
-image.addEventListener('load', () => {
-  context.drawImage(image, 150, 40, 700, 700, 10, 10, 580, 580)
-})
-image.src = './assets/squidward.webp'
+// blanks out the canvas
+const clear = () => {
+  context.fillStyle = 'rebeccapurple'
+  context.fillRect(0, 0, SIZE, SIZE)
+}
 
-const clearButton = document.getElementById('clear') as HTMLButtonElement
-const fillButton = document.getElementById('fill') as HTMLButtonElement
-const alphaButton = document.getElementById('alpha') as HTMLButtonElement
+// helper function to draw the cursor
+const drawCursor = () => {
+  context.fillStyle = 'white'
+  context.beginPath()
+  context.arc(mouse.x, mouse.y, 5, 0, 2 * Math.PI)
+  context.fill()
+}
 
-clearButton.addEventListener('click', () => {
-  // clearing sets pixels in a rectangle to black, transparent
-  context.clearRect(0, 0, 300, 600)
-})
+// what happens every frame
+const render = () => {
+  clear()
+  drawCursor()
+  window.requestAnimationFrame(render)
+}
 
-fillButton.addEventListener('click', () => {
-  // this fills with white, opaque (or substitute a clear color)
-  context.fillStyle = 'rgb(255, 255, 255)'
-  context.fillRect(300, 0, 300, 300)
-})
+// kick off the frame loop
+window.requestAnimationFrame(render)
 
-alphaButton.addEventListener('click', () => {
-  // this fills with white, at 10% transparency (for a fade/ghost effect)
-  context.fillStyle = 'rgba(255, 255, 255, 0.1)'
-  context.fillRect(300, 300, 300, 300)
+// listen for when the mouse moves on top of the canvas
+// https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
+canvas.addEventListener('mousemove', (event: MouseEvent) => {
+  // update the stored mouse position
+  mouse.x = event.offsetX
+  mouse.y = event.offsetY
 })

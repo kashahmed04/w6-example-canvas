@@ -12,15 +12,5 @@ body {
 
 canvas {
   border: 1px solid black;
-}
-
-section {
-  display: flex;
-  justify-content: space-between;
-  width: 600px;
-  gap: 20px;
-  margin-bottom: 10px;
-}
-button {
-  flex-grow: 1;
+  cursor: none;
 }
