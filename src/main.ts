@@ -19,21 +19,22 @@ const image = new Image()
 image.addEventListener('load', () => {
   //we load in whatever image we define (if we have multiple images we can just set up a new image() or target an individual
   //image element from the HTML with document.getelementbyid or a query selector and use that variable here
-  //to load it into the canvas specifially for that image)**
+  //to load it into the canvas specifially for that image)
   // draw it small
   context.drawImage(
-    //this is for the first larger image but it starts off huge so we make it small**
+    //this is for the first larger image but it starts off huge so we make it small
     image, // source data
     20, // x-coord
     20, // y-coord
     250, // width
-    190, // height (if we dont specify width and height then it does the default size)**
-    //if we make the width or height bigger is that when it would get more pixiliated**
+    190, // height (if we dont specify width and height then it does the default size)
+    //if we make the width or height bigger is that when it would get more pixiliated
 
-    //images always get drawn from the top left (same with everything else) for canavs right**
+    //images always get drawn from the top left (same with everything else) for canavs right (yes)
   )
 
-  //what does it mean by something taking in overrides**
+  //what does it mean by something taking in overloading (they are fucntion overloads and we can call it with a different number of
+  //parameters)
   // draw a subsection of it
   context.drawImage(
     image, // source data
@@ -42,30 +43,32 @@ image.addEventListener('load', () => {
     300, // width of source
     120, // height of source
     //these 4 lines above get the part of the image we need and the last 4 lines starts drawing the part of the image
-    //we copied in the location we defined for x and y and as the size we specify it to be**
-    //why is it not pixilated since we made it bigger**
+    //we copied in the location we defined for x and y and as the size we specify it to be
+    //why is it not pixilated since we made it bigger (we got the part of the image from the original image
+    //thats why its not pixilated)
     20, // x of destination
     270, // y of destination
     300, // width of destination
     120, // height of destination
 
     //we dont need any variables to store parts of the image right we can just put coorindates in like we did here and
-    //it would work right**
+    //it would work right (yes)
   )
 })
 
 // set the .src attribute, officially starting the image load
-// make sure we set our laod event handler before we upload the source with image.src because we wont be able to draw with it until**
-//do we usually define the image at the end (why)**
+// make sure to do our source after we load because if we did it before then the image would load first before going to the listener
+// and the image would load and the load event would fire before we started listening for the event (before the image started loading)
 image.src = './assets/squidward.webp' //image gets set line 44 from comments
 
 //CANVAS IMAGES (EXAMPLE 5)(go over)**:
 
 // image data can be laoded from many differnt sources like the ones listen from the documetnation
 // (we can grab tags from our html or a video eleemnt of another canvas or an image from an API or we can copy
-// pixels we have in memory and not laoded on the screen yet)**
+// pixels we have in memory and not laoded on the screen yet)(we could have a canvas not visible on the screen and copy pixels from it)
 // we use images from other domains there has to be cross origin stuff set up but it will consider the canvas tainted which means
-// because of security we cant**
+// because of security and it wont allow us to copy pixels from the other sources and put it to our harddrive
+//
 
 // the squidward image is bigger than the canvas we have so we size it down and we can also take the window of the image and draw a portion of it
 // we make a new image then we add eventlistener for load event and we set the source outside of it*
