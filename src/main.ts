@@ -45,6 +45,8 @@ fillButton.addEventListener('click', () => {
 //the above 2 only work for one click but the last one works for multiple clicks because
 //it changes opacity and makes it more transparent each time we click by 0.1 for the alpha value**
 
+//fillRect() - fills with an opaque color (this means solid right)**
+
 //fillstyle is for shapes and their color (does not apply automcatically have to do fill for shape or
 //filltext for text)**
 //fill fills the shape when we finish drawing it**
