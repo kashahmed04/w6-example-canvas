@@ -40,6 +40,8 @@ alphaButton.addEventListener('click', () => {
   // this fills with white, at 10% transparency (for a fade/ghost effect)
   context.fillStyle = 'rgba(255, 255, 255, 0.1)'
   context.fillRect(300, 300, 300, 300)
+  //fillRect(alpha) - fills with a partially transparent color (there is no alpha value we put in so do we usaully put it with
+  //our fillstyle)**
 })
 
 // EXAMPLE 6:
