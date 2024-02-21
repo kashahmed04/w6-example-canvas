@@ -26,6 +26,7 @@ context.closePath() //closes the shape up so we can fill it on the next line wit
 context.fill() //when to know to use fill because we had fillrect() before so how do we know when to use it with certain shapes or fonts****
 context.stroke() //stoke makes the whole shape show up then or just the color inside the shape
 //when we say stroke everything gets drawn and filled in right (yes)
+//default stroke is black right****
 
 // top center triangle
 context.fillStyle = 'green'
@@ -89,6 +90,8 @@ context.fill('evenodd') // fills the path, odd overlaps are filled, even overlap
 //even layers (2) for the squares so it does not fill in but for odd it would be 1 (canvas is 0) so its filled
 //and a shape ontop of a shape ontop of a shape is 3 so it would be filled (is it like index and it goes from 0 onward
 //for stacking shapes ontop of each other****)
+//so if we have another square on a portion of the two overlapping squares it would only fill that portion right and not the
+//whole whitepsace****
 context.stroke()
 
 // combining arc and lineTo to make a heart
