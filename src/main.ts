@@ -45,6 +45,15 @@ fillButton.addEventListener('click', () => {
 //the above 2 only work for one click but the last one works for multiple clicks because
 //it changes opacity and makes it more transparent each time we click by 0.1 for the alpha value**
 
+//fillstyle is for shapes and their color (does not apply automcatically have to do fill for shape or
+//filltext for text)**
+//fill fills the shape when we finish drawing it**
+//filltext makes text with the color we defined in fillstyle**
+//strokestyle is for lines only and define the color and we dont need to do fill it does it automatically
+//when we say stroke() at the end of drawing the line**
+//fillrect fills in rectangle automatically no need to say fill after drawing the rectangle
+//(is there any other shapes that have this)**
+
 alphaButton.addEventListener('click', () => {
   // this fills with white, at 10% transparency (for a fade/ghost effect)
   context.fillStyle = 'rgba(255, 255, 255, 0.1)'
