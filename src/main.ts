@@ -193,7 +193,7 @@ context.stroke()
 
 // CANVAS LINES:
 
-// we set the stoke style (color), the linewidth (thickness of line), beginpath()(we are about to start drawing a path then we can do
+// we set the stoke style (color), the linewidth (thickness of line), beginpath()(we are about to start drawing a path**** then we can do
 // series of moveto() and lineto() afterwards) moveto()(moves position of pen without touching paper) lineto()(put pen down to start drawing)
 // the moveto and lineto dont draw automatically so we do a stroke afterwards at the very end to actually draw a shape
 
