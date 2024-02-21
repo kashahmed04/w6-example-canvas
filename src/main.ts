@@ -23,7 +23,7 @@ context.lineTo(120, 120) //why is there 3 lineto if we have 4 sides for square (
 context.lineTo(120, 60)
 context.closePath() //closes the shape up so we can fill it on the next line within the lines (figures our from where
 //we are to go back to the start)(it will be a straight line to go back even if it looks weird)
-context.fill()
+context.fill() //when to know to use fill because we had fillrect() before so how do we know when to use it with certain shapes or fonts****
 context.stroke() //stoke makes the whole shape show up then or just the color inside the shape
 //when we say stroke everything gets drawn and filled in right (yes)
 
@@ -87,7 +87,8 @@ context.lineTo(340, 320)
 context.closePath()
 context.fill('evenodd') // fills the path, odd overlaps are filled, even overlaps are not
 //even layers (2) for the squares so it does not fill in but for odd it would be 1 (canvas is 0) so its filled
-//and a shape ontop of a shape ontop of a shape is 3 so it would be filled
+//and a shape ontop of a shape ontop of a shape is 3 so it would be filled (is it like index and it goes from 0 onward
+//for stacking shapes ontop of each other****)
 context.stroke()
 
 // combining arc and lineTo to make a heart
