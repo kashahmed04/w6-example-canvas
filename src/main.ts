@@ -15,20 +15,18 @@ interface Point {
 }
 
 //tracking the last known mouse position
-//why do we define mouse with a :**
-//we are defining our point instance as x and y starting at 0 (does this do anything in terms of the left corner (start)
-//of the canvas or are we just defining points)**
+//why do we define mouse with a : (mouse is the key and the point is a type and mouse is of type point)
+//we are defining our point instance as x and y starting at 0 (starts the circle at the left corner)
 //we are making an instance of the interface right and we can make many of them like this with different varibale names
-//and they wont affect each other**
+//and they wont affect each other (yes)
 const mouse: Point = { x: 0, y: 0 }
 
 // blanks out the canvas
 const clear = () => {
   //every frame we redraw the background because we would get a trailing effect then as we
-  //moved the mouse and it would stay there and not disapear**
+  //moved the mouse and it would stay there and not disapear (yes)
   //if we did not have this why would the circle also stay on the left hand corner of the screen even though our mouse did not go
-  //there**
-  //how does the circle know to start on the top left of the screen by default**
+  //there
   context.fillStyle = 'rebeccapurple'
   context.fillRect(0, 0, SIZE, SIZE)
 }
@@ -37,9 +35,12 @@ const clear = () => {
 const drawCursor = () => {
   context.fillStyle = 'white'
   context.beginPath()
-  context.arc(mouse.x, mouse.y, 5, 0, 2 * Math.PI) //this makes a full circle (2 PI) starting from 0 with a radius of 5**
+  context.arc(mouse.x, mouse.y, 5, 0, 2 * Math.PI) //this makes a full circle (2 PI) starting from 0 with a radius of 5
   //and its based on whereever we move the mouse and the circle follows it because every frame this method is called
-  //from render which is used in requestanimationframe**
+  //from render which is used in requestanimationframe
+  //this draws the screen more frequently than the mouse event is reporting it
+  //the request animation frame happens more than the mouse move and since the mouse event writes to the variable
+  //the renderer may get the same coroidnates multiple times in a row until it updatse
   context.fill()
 }
 
@@ -47,11 +48,11 @@ const drawCursor = () => {
 const render = () => {
   clear()
   drawCursor()
-  window.requestAnimationFrame(render) //keeps calling itself every frame and never ends unless we close the program**
+  window.requestAnimationFrame(render) //keeps calling itself every frame and never ends unless we close the program
 }
 
 // kick off the frame loop
-window.requestAnimationFrame(render) //this starts the loop and the request inside is what keeps it going like a loop**
+window.requestAnimationFrame(render) //this starts the loop and the request inside is what keeps it going like a loop (yes)
 
 // listen for when the mouse moves on top of the canvas
 // https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
@@ -59,13 +60,15 @@ canvas.addEventListener('mousemove', (event: MouseEvent) => {
   // update the stored mouse position
   //as we move the mouse around we store the x and y coorindates and this updates every time the mouse moves
   //and gets the offset which is the x and y coordinates of where our mouse is currently then each time the frame
-  //updates in render the drawcursor gets the new x and y coordinates and puts the circle where the mouse is**
-  //offset gets the current position of the mouse right from the center of our mouse for the x and y coorindates right**
+  //updates in render the drawcursor gets the new x and y coordinates and puts the circle where the mouse is
+  //offset gets the current position of the mouse right from the center of our mouse for the x and y coorindates right
 
-  //the mouse is the current instance of the interface we have to store the current mouse x and y coorindates**
-  //why did we need an interface could we have just used mouseX and mouseY variables as floats and it would have worked the same**
+  //the mouse is the current instance of the interface we have to store the current mouse x and y coorindates (yes)
+  //why did we need an interface could we have just used mouseX and mouseY variables as floats and it would have worked the same (yes)
   mouse.x = event.offsetX
   mouse.y = event.offsetY
+
+  //this just goes wherever our cursor is (like a cursor) and not following our mouse
 })
 
 /*
@@ -76,10 +79,10 @@ moves ontop of canvas element we save the offset of our mouse*
 
 clipboard is whole page and green page is the canvas and (0,0) is the top left of the green page
 and the x offset is from left side of the canvas to x point of our mouse position
-and y offset is from top of screen down to y offset of mouse (down is positive**
+and y offset is from top of screen down to y offset of mouse (down is positive)
 
 we have renderer in that is like a loop for each refresh of the canvas and each time the canvas refrehes it*
 
 in the CSS we dont have the arrow but we change it to the circle within the canvas but if we go outside the canvas
-then it turns back to cursor** (so basically we do cursor: none in the CSS for the canvas element then we create the circle
-in the JS for following the mouse as we move)**/
+then it turns back to cursor (so basically we do cursor: none in the CSS for the canvas element then we create the circle
+in the JS for following the mouse as we move)(yes)*/
