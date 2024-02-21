@@ -15,7 +15,7 @@ const context = canvas.getContext('2d') as CanvasRenderingContext2D
 
 // solid white fill of the canvas since context is the canvas renderer responsible for showing everything on the screen
 //(yes)
-//we dont use canvas here because it makes the actual canvas itself and does not rednder our drawings (yes)
+//we dont use canvas here because it makes the actual canvas itself and does not rednder our drawings (yes)****
 context.fillStyle = 'rgb(255, 255, 255)'
 // draw the white background for the canvas (yes)
 context.fillRect(0, 0, SIZE, SIZE)
@@ -26,11 +26,12 @@ context.fillRect(0, 0, SIZE, SIZE)
 // But I didn't, to be explicit about what values are being passed to the draw methods.
 // (in other words, making it easier to follow the example without having to math out the values)
 
-//when we are specifying coorindates on the canvas we talk about pixel boundaries (drawing rectangle in first image
-//because the red line is on the black line and its easy to show pixels to be filled (whole pixels))
+//when we are specifying coorindates on the canvas we talk about pixel boundaries (edges of the image we defined right)****
+//(drawing rectangle in first image because the red line is on the black line and its easy to
+//show pixels to be filled (whole pixels))
 
 //in the middle image we are drawing an image and the line width is 1 pixel so the green says if we have width of 1 pixel that
-//means the dark blue region is what the line is but we cant have half a pixel be colred and not be colored and the
+//means the dark blue region is what the line is but we cant have half a pixel be colored and not colored and the
 //lightblue becomes gray and it makes the line look fuzzier than it should be
 
 //to fix the second image, in the third image if we have a line width of 1 we should have our coordinates in half
@@ -38,6 +39,8 @@ context.fillRect(0, 0, SIZE, SIZE)
 
 //for odd numbers if we divide them in half we dont get a whole number of pixels which contribute to bluriness
 //for even numbers it wont do that and we have whole numbers so we can have clearer lines (for the line width)
+
+//why do we divide in half for the kine width when using pixels****
 
 // The first series has odd-width strokes on whole-number pixel coordinates
 context.strokeStyle = 'black'
@@ -154,9 +157,13 @@ context.lineTo(120, 210)
 context.stroke()
 
 // The fourth series has even-width strokes on 0.5-pixel coordinates
-//this is blurry because even numbers return whole numbers but we are going by .5 incremenets****
+//this is blurry because even numbers return whole numbers but we are going by .5 incremenets (would it have the gray blurrieness
+//like the lightblue pixels in the second image on the slides for the odd numbers)****
 //even numbers go good with whole pixel coorindates and odd numbers go good with 0.05 pixel coorindates****
-//how do we know to change x or y to go the point 5 coorindates or the whole number coordinates (does it matter)****
+//how do we know to change x or y to go the point 5 coorindates or the whole number coordinates (does it matter or do we usually
+//do this with x and the y can be a whole number no matter what)****
+//did we have to specify strokestyle here each time we went through because it was the same color so could we have defined it once on
+//to top and just draw all of our lines****
 context.strokeStyle = 'black'
 context.lineWidth = 2
 context.beginPath()
@@ -198,7 +205,8 @@ context.stroke()
 
 // we set the stoke style (color), the linewidth (thickness of line), beginpath()(we are about to start drawing a path**** then we can do
 // series of moveto() and lineto() afterwards) moveto()(moves position of pen without touching paper) lineto()(put pen down to start drawing)
-// the moveto and lineto dont draw automatically so we do a stroke afterwards at the very end to actually draw a shape
+// the moveto and lineto dont draw automatically so we do a stroke afterwards at the very end to actually draw a shape (draws the outline
+//of the shape (how does it get the fill if we just have stroke and stroke is the outline of our shape))****
 
 // context.strokeStyle = 'black'
 // context.lineWidth = 1
