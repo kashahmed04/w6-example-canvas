@@ -31,13 +31,12 @@ context.fillText(
   'Cheese on toast airedale the big cheese. Danish fontina cheesy grin airedale danish fontina taleggio the big cheese macaroni cheese port-salut. Edam fromage lancashire feta caerphilly everyone loves chalk and cheese brie. Red leicester parmesan cheese and biscuits cheesy feet blue castello cheesecake fromage frais smelly cheese.',
   20,
   180,
-  560, //if it goes beyond 560 it or if its below it then**
+  560, //if we dont give it max width it keeps drawing until it does not have enough characters and does it on the same line
+  //and if we do it in a max width it squishes all the text on the same line within that width (there is no way to wrap automatically)
 )
 
 //different baselines
-//stokestyle is like the fillstyle but its only used for lines right to fill them (dont use fillstyle here are can we)**
-//all the lines made below this will get the red color automatically and we dont have to say fill or filltext to actually apply the
-//color like we do with text and shapes right)**
+
 context.strokeStyle = 'red'
 context.lineWidth = 1
 context.beginPath()
@@ -46,14 +45,14 @@ context.lineTo(589.5, 240.5)
 context.stroke()
 
 context.font = '48px Arial'
-context.textBaseline = 'alphabetic' // the default (which is on the line)**
-context.fillText('Hi', 20, 240) //fill text is what puts custom text on the canvas at a certain location with the color defined
-//with fillstyle above (black)**
+context.textBaseline = 'alphabetic' // the default
+context.fillText('Hi', 20, 240)
 
-context.textBaseline = 'bottom' //why does bottom not go at the bottom of the line what is it based on**
+context.textBaseline = 'bottom' //bottom floats above the line and bottom is used for the letters with the bottom
+//of the letters to sit on the line
 context.fillText('Hi', 80, 240)
 
-context.textBaseline = 'hanging' //hanging is based on (in class example)**
+context.textBaseline = 'hanging' //hanging or top is more useful
 context.fillText('Hi', 140, 240)
 
 context.textBaseline = 'ideographic' //what is ideographic based on it looks the same as bottom**
@@ -73,33 +72,33 @@ context.fillText('AmaticSC before load', 20, 360)
 
 // create a custom FontFace
 const myFont = new FontFace('AmaticSC', 'url(./assets/AmaticSC-Regular.ttf)') //we always need url(name of the directory
-//in our file exploerer for the project)** (can we say url(link to google fonts site))**
-//first parameter is font family and second is link for the font**
+//in our file exploerer for the project) (can we say url (link to google fonts site)) (yes)
+// not required to download font
+//first parameter is font family and second is link for the font
 // wait until the font actually loads, then...
 myFont.load().then((font) => {
-  //it takes in myfont as a parameter right (is this the case for arrow functions usually whatever is first. something
-  //then it becomes the parameter of the arrow funciton)**
-  //use the promise to load the data (.load) then the .then is the callback once its done loading the font to
-  //add the font to the document and fill in the text we put in**
-  //difference between fill (to fill in the shape otherwise
-  //it wont with fillstyle only), fillstyle (defined before drawing shape), and filltext (to fill in the text otherwise
-  //it wont with fillstyle only) and when to use each**
-  //and strokestyle is only used for lines to fill have a color otherwise if we dont have it then is uses the default color
-  //which is black for all lines, texts, and drawings**
-  //where do we target the document to add the font to add the font to it**
+  //we are calling load on the font then we tell the font to load itself and when its done we have laoded the font
+  //then it knows thats the parameter for whatever font we load in
   // register the font with the document
+
+  //document represents the entireyet of the browser and it has all the fonts available to use and it says add this
+  //font to the list of the defauly the browser has
   document.fonts.add(font)
   // and after waiting, actually draw the text
   context.fillText('AmaticSC after load', 20, 420)
 
-  //why is there no error check for if the data has loaded yet we did it with APIS (are they not necessary)**
+  //why is there no error check for if the data has loaded yet we did it with APIS (are they not necessary)
+  //we can have confidence it will work and we are loading it from ourselves but if we did it from the web then we put a catch
+  //on there
 })
 
 // CANVAS TEXT (EXAMPLE 4)(ask)**:
 
-// we can draw words but we only use one line to draw them not multiple because it gets complicated (ex.)**
+// we can draw words but we only use one line to draw them not multiple because it gets complicated (ex. we want to
+// avoid putting a lot of text in the canvas because it becomes inaccessible to people with screen readers and we cant copy
+// and paste it
 // font property lets us define size and typeface (would we have to load it in first with promises or does it change the font for us
-//automatically when we load it in and all we have to do is add it to the document and fill the text
+// automatically when we load it in and all we have to do is add it to the document and fill the text
 // and the .font is for built in fonts only)**
 // filltext does the filling of text**
 // stroketext if the broeder of letters (why not filltext)**
