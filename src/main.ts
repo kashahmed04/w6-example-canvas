@@ -13,11 +13,22 @@ interface Point {
   x: number
   y: number
 }
-// tracking the last known mouse position
+
+//tracking the last known mouse position
+//why do we define mouse with a :**
+//we are defining our point instance as x and y starting at 0 (does this do anything in terms of the left corner (start)
+//of the canvas or are we just defining points)**
+//we are making an instance of the interface right and we can make many of them like this with different varibale names
+//and they wont affect each other**
 const mouse: Point = { x: 0, y: 0 }
 
 // blanks out the canvas
 const clear = () => {
+  //every frame we redraw the background because we would get a trailing effect then as we
+  //moved the mouse and it would stay there and not disapear**
+  //if we did not have this why would the circle also stay on the left hand corner of the screen even though our mouse did not go
+  //there**
+  //how does the circle know to start on the top left of the screen by default**
   context.fillStyle = 'rebeccapurple'
   context.fillRect(0, 0, SIZE, SIZE)
 }
@@ -26,7 +37,9 @@ const clear = () => {
 const drawCursor = () => {
   context.fillStyle = 'white'
   context.beginPath()
-  context.arc(mouse.x, mouse.y, 5, 0, 2 * Math.PI)
+  context.arc(mouse.x, mouse.y, 5, 0, 2 * Math.PI) //this makes a full circle (2 PI) starting from 0 with a radius of 5**
+  //and its based on whereever we move the mouse and the circle follows it because every frame this method is called
+  //from render which is used in requestanimationframe**
   context.fill()
 }
 
@@ -34,100 +47,39 @@ const drawCursor = () => {
 const render = () => {
   clear()
   drawCursor()
-  window.requestAnimationFrame(render)
+  window.requestAnimationFrame(render) //keeps calling itself every frame and never ends unless we close the program**
 }
 
 // kick off the frame loop
-window.requestAnimationFrame(render)
+window.requestAnimationFrame(render) //this starts the loop and the request inside is what keeps it going like a loop**
 
 // listen for when the mouse moves on top of the canvas
 // https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent
 canvas.addEventListener('mousemove', (event: MouseEvent) => {
   // update the stored mouse position
+  //as we move the mouse around we store the x and y coorindates and this updates every time the mouse moves
+  //and gets the offset which is the x and y coordinates of where our mouse is currently then each time the frame
+  //updates in render the drawcursor gets the new x and y coordinates and puts the circle where the mouse is**
+  //offset gets the current position of the mouse right from the center of our mouse for the x and y coorindates right**
+
+  //the mouse is the current instance of the interface we have to store the current mouse x and y coorindates**
+  //why did we need an interface could we have just used mouseX and mouseY variables as floats and it would have worked the same**
   mouse.x = event.offsetX
   mouse.y = event.offsetY
 })
 
 /*
 dot that follows the mouse and to have it so there is no marks as we move the mouse we have to clear the canvas as we move the mouse and
-if we dont clear the canvas the cusor draws as we move the mouse**
-hold x and y positin and have mouse be at x and y and there is an event listender for the mousemove and every time the mouse
-moves ontop of canvas element we save the offset of our mouse**
+if we dont clear the canvas the cusor draws as we move the mouse*
+hold x and y position and have mouse be at x and y and there is an event listender for the mousemove and every time the mouse
+moves ontop of canvas element we save the offset of our mouse*
 
-clipboard is page and green page is the canvas and (0,0) is the beginning of the canvas and the x offset is from left side to x point
-and y is from top of screen to y offset of mouse**
+clipboard is whole page and green page is the canvas and (0,0) is the top left of the green page
+and the x offset is from left side of the canvas to x point of our mouse position
+and y offset is from top of screen down to y offset of mouse (down is positive**
 
-we have renderer in that is like a loop for each refresh of the canvas and each time the canvas refrehes it**
+we have renderer in that is like a loop for each refresh of the canvas and each time the canvas refrehes it*
 
-in the css we dont have the arrow but we change it to the circle within the canvas but if we go outside the canvas
-then it turns back to cursoe**
-
-
-
-BRNACH 8:
-
-more of a smoother animation and it interpolates (more smoother) animation as we mvoe our mouse
-we take the x position and we add the differnec between the target and current position multipled by a small number**
-
-if we have position at 0 and target (where we want to go) is 100 then we**
-
-if we do this enough frames in a row we get closer and closer to our target position**
-
-in code we have a targer point and position point (target is where we want to be and positon is where we actually are right now)
-
-we also have an update funcgion to run the interpolation for a smoother animation and we multiply by a larger percentage to make
-it folow the mouse more and the more towards 0 the number is then the more delayed it is**
-
-GHOSTING (BRANCH 9):
-
-when we dont clear the canvas the white line follows us and for ghosting we draw a transparent purple that fades as we move the mouse
-(how is it purple I thought it was white)**
-
-we fill the rectangle in the beginning after we define the point because it leaves a trail behind and the canvas starts off as all
-black pixels and we draw white pixels ontop and becaue of that it does not go back to the same purple (black with a bunch of purple.vs.
-white with a bunch of purple)**
-
-to have some things not ghost and ghost we would make a seperate canvas for things to not to ghost or to ghost and if we want click
-or collisions we need to do it ourself in code and have events attached to that specific canvas**
-
-if we only had click event on bottom canvas the top one would be trandparent unless we put click event on top canvas then**
-
-BRANCH 10:
-
-drawing some shapes and text over the mouse (coordinates as we move the mouse)
-
-our draw cursor got more complicated and we make the center point rounded and add the half pixel to make it look smoother because its odd**
-then we draw these shapes in relation to the center position which is the center of our mouse as we move (center)**
-
-we draw some text using the centerx and centery as a reference point**
-
-we keep reapting this centerx and centery stuff so in branch 11 we clean it up a bit**
-
-BRANCH 11:
-
-we use transforms and the idea is that we have the starting coordinates in the upper case and we can provide some distances/roatations, etc.
-to move the origins around and change our frame of reference and we draw in one place and it will appear in another**
-
-translate,scale,rorate hide the matrix for us and translate by and x or y (which matrix) and we can roate by scalar and scale by a scalar as well**
-
-we can use transfrom and it multipled our matrix ontop of its matrix and set transform**
-
-save and restore let us do a transform state and if we  have transformed somewhere we save that and we draw somewhre else and we restore
-and it goes back to the last saved area and the drawings we draw somewhere else will be saved as we do the transform**
-
-reset reansform returns to the top left corner of the screen and resets the whole canvas**
-
-draw cursor is updated and we set it with a centerx and centery we could have also done a context.translate(center.x,center.y) under the
-set trasnform but now for the rest of our operations we are drawing in relation to the origin and not where the mouse is**
-
-if we want to roate everything we do context.roate(math.pi/4) (45 degrees) and all of the transforms apply it to the things drawn
-their declaraions**
-
-for the effect it erases everything on the bottom right because when we do settransform we said our position of the mouse is (0,0) and we fill
-from the width and height of canvas but starting from the mouse position currently not the top left side of the screen**
-
-the origin clears the whole canvas from top to bottom but if we focus starting from the cursor, then it clears from the bottom
-of the mouse only**
-
-
- */
+in the CSS we dont have the arrow but we change it to the circle within the canvas but if we go outside the canvas
+then it turns back to cursor** (so basically we do cursor: none in the CSS for the canvas element then we create the circle
+in the JS for following the mouse as we move)**/

@@ -6,8 +6,12 @@ body {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /*this goes by row (up and down) now since our flex direction is column (originally went column)**/
+  align-items: center; /*this goes by column (left and right) now since our flex direction is column (originally went row)**/
+
+  /*is the default for align items the rows (up and down) and the justify content would be the columns (left and right)
+  if we did not specify the flex-direction or if we made the flex-direction row**/
+  /*could we have made this flex direciton row or is there a reason for making it column**/
 }
 
 canvas {
