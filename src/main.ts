@@ -11,9 +11,16 @@ const context = canvas.getContext('2d') as CanvasRenderingContext2D
 context.fillStyle = 'rgb(255, 255, 255)'
 context.fillRect(0, 0, SIZE, SIZE)
 
+// we have image and its 1000 pixels wide and 60 ish tall and we are going to have
+//the starting cooridnates to start drawing rectangle and
+// we have width and height for how we want to draw it based on the starting
+//cooridnates and the other cooridnates is where we start drawing the
+// image and how big it is (8 numbers source,x,y (starting),width,height (to start),destination x,y,and destintion width and height)
+
 const image = new Image()
 image.addEventListener('load', () => {
-  context.drawImage(image, 150, 40, 700, 700, 10, 10, 580, 580) //what do all the numbers represent**
+  context.drawImage(image, 150, 40, 700, 700, 10, 10, 580, 580) //what do all the numbers represent** (why and when do we know
+  //to set a destination)**
 })
 image.src = './assets/squidward.webp'
 
@@ -23,7 +30,9 @@ const alphaButton = document.getElementById('alpha') as HTMLButtonElement
 
 clearButton.addEventListener('click', () => {
   // clearing sets pixels in a rectangle to black, transparent
-  //what does it mean black it's not black on the screen (does it mean transparent)**
+  //what does it mean black it's not black on the screen (does it mean transparent and purple because we set the backgrond
+  //to purple otherwise it would have been black)**
+  //this is 0 opactity because its solid**
   context.clearRect(0, 0, 300, 600)
 })
 
@@ -42,6 +51,8 @@ alphaButton.addEventListener('click', () => {
   context.fillRect(300, 300, 300, 300)
   //fillRect(alpha) - fills with a partially transparent color (there is no alpha value we put in so do we usaully put it with
   //our fillstyle)**
+  //fillrect automatically fills it for rectangle but do other shapes automatically fill or do we have to say context.fill()
+  //after drawing the shape for other shapes**
 })
 
 // EXAMPLE 6:
@@ -51,9 +62,5 @@ alphaButton.addEventListener('click', () => {
 // we have our image we load it and draw it and we have buttons setup and we have click events setup on each of them and clearrect clears it out
 // with black with 0 opactity for the first button (its not black though)**
 // the second button makes it white and the third button makes it transparent each time we click**
-
-// we have image and its 1000 pixels wide and 60 ish tall and we are going to have the starting cooridnates to start drawing rectangle and
-// we have width and height for how we want to draw it based on the starting cooridnates and the other cooridnates is where we start drawing the
-// image and how big it is (8 numbers source,x,y (starting),width,height (to start),destination x,y,and destintion width and height)
 
 // */
