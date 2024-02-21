@@ -154,6 +154,9 @@ context.lineTo(120, 210)
 context.stroke()
 
 // The fourth series has even-width strokes on 0.5-pixel coordinates
+//this is blurry because even numbers return whole numbers but we are going by .5 incremenets****
+//even numbers go good with whole pixel coorindates and odd numbers go good with 0.05 pixel coorindates****
+//how do we know to change x or y to go the point 5 coorindates or the whole number coordinates (does it matter)****
 context.strokeStyle = 'black'
 context.lineWidth = 2
 context.beginPath()
