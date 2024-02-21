@@ -2,8 +2,8 @@ import './styles/reset.css'
 import './styles/styles.css'
 
 //how does it know to make background purple (the styles has purple as the background for the html element)
-//why wouldnt we do it from the body****
-//makes the whole abckground purple but we change whatever is in the canvas by drawing the transparent purple suqares
+//why wouldnt we do it from the body (there is no difference so is it preference and it does not matter)****
+//makes the whole background purple but we change whatever is in the canvas by drawing the transparent purple suqares
 //what does it mean it starts off as black transparent pixels I thought it was white for canavs if we draw nothign on it
 //the default is black and transparent and we drew white for the fillstyle so if we dont specify a fillstyle then
 //we get black
@@ -28,14 +28,17 @@ context.fillStyle = 'rgb(255, 255, 255)'
 //start from (0,0)(top left), then go the full width and make the height 10 (how thick the white box should be)****
 context.fillRect(0, 0, SIZE, 10) //(top bar)
 
-//start from a bit to the left of the end of the canvas, and a bit below for the y-axis,
+//start from a bit to the left of the end of the canvas, and a bit below for the y-axis (because down is positive for y),
 //then the width is 10 (how thick the bar is) then go all the way down for the height but stop 20 pixels before
-//the end (600 pixels is total canvas width and height))****
+//the end (600x600 pixels is total canvas width and height))****
 context.fillRect(SIZE - 10, 10, 10, SIZE - 20) //(right bar)
 
-//start at 0 for the x, start 10 below for y, then make the bar 10 thick for the width and for the
-//height stop 20 pixels before the end of the canvas (the 600)****
+//start at 0 for the x, start 10 below for y, then make the bar 10 thick for the width (since the bar is vertical now)**
+// and for the height stop 20 pixels before the end of the canvas (the 600)****
 context.fillRect(0, 10, 10, SIZE - 20) //(left bar)
+
+//we do size - 20 for the height because we need 10 for the width because the line starts
+//at the total width - 10 and we make the line 10 pixels thick adding up to 20****
 
 //start at 0 for the x, the y is all the way down but 10 pixels before the 600, make the go the whole width
 //and make the bar 10 pixels thick for the height since the bar is horizontal****
@@ -43,17 +46,23 @@ context.fillRect(0, SIZE - 10, SIZE, 10) //(bottom bar)
 
 // semi-transparent white fill
 //the whole canvas starts as white with no transparency but when we
-//draw the actual rectanngles with the loop below thats what makes it transparent (yes)
+//draw the actual rectangles with the loop below thats what makes it transparent (yes)
 //the fillstyle is for only the shapes we draw after we assign it a color
-//(same for stroke but those are for lines only)(yes)
-//we can use fillstyle with shapes and text as well
+//(same for strokestyle but those are for lines only)(yes)****
+//we can use fillstyle with shapes and text as well****
+//why do we make it white here if we have purple (purple is defined in the CSS but could we have used it here
+//too or do we usually define color in CSS and only work with white here)****
 context.fillStyle = 'rgba(255, 255, 255, 0.25)'
+//can make rgb, words, etc. (same for strokestyle and fill right no specific color style we have to put (rgb, hsv, etc.))****
+
+//Drawing writes to pixels, which are then displayed (this means that when we are using canvas its units are in pixels
+//only right and we cant change it or use any other units)**** (slide 5)****
 
 // size of each square, accounting for the borders on both sides
 //we do minus 20 because we have 10 pixels wide for each border making it 20 for 2 sides
 const squareSize = (SIZE - 20) / 10 //(we divide by 10 because its a 10x10 board)
 
-//0 mod 2 is baically 0 / 2 but no remainder so its 0
+//0 mod 2 is how many times does 2 go into 0 which is 0 times so we get 0 for the remainder****
 //1 mod 2 is 2 goes into 1 0 times so its 1 left over (how many times does the right number go into the left number
 //and that remainder)
 for (let x = 0; x < 10; x++) {
@@ -63,7 +72,10 @@ for (let x = 0; x < 10; x++) {
     if (x % 2 !== y % 2) {
       context.fillRect(
         //we are shifting everything over by 10 pixels to the right and 10 pixels down
-        //and it starts from within the border that way and not outside the border
+        //and it starts from within the border that way and not inside of the border
+        //how does this know to go onto the correct area down for the next square when we add
+        //by x and by y and multiply by square size (the second set of square size is the width and height to draw
+        //the square which is constant)****
         10 + x * squareSize,
         10 + y * squareSize,
         squareSize,
@@ -75,6 +87,7 @@ for (let x = 0; x < 10; x++) {
 
 /*
 CANVAS API:
+
 homework 2 is going to be announced on Wednesday or Friday
 
 HTML CANVAS ELEMENT:
@@ -88,12 +101,13 @@ we add a canvas tag to HTML
 sleect canvas tag with JS or TS
 const canvas = document.getElementById('canvas') as HTMLCanvasElement
 
-get rendering context (like audio context that was mananger of audio system and we have rendering system for the canvas)
+get rendering context (like audio context that was mananger of audio system (all the audios)
+and we have rendering system for the canvas and its the manager of everything we put on the canvas with the context.)****
 we use rendering context to be able to draw things on the canvas
 const context = canvas.getContext('2d') as CanvasRenderingContext2D
 
 then we use the rendering context to draw on the canvas by doing context. before doing a drawing (we do
-the context. for anything we draw that goes on the canvas right)
+the context. for anything we draw that goes on the canvas)
 
 
 
