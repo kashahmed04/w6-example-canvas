@@ -23,9 +23,10 @@ context.lineTo(120, 120) //why is there 3 lineto if we have 4 sides for square (
 context.lineTo(120, 60)
 context.closePath() //closes the shape up so we can fill it on the next line within the lines (figures our from where
 //we are to go back to the start)(it will be a straight line to go back even if it looks weird)
-context.fill() //when to know to use fill because we had fillrect() before so how do we know when to use it with certain shapes or fonts****
-context.stroke() //stoke makes the whole shape show up then or just the color inside the shape
-//when we say stroke everything gets drawn and filled in right (yes)
+//so basically this goes back to the start from where we started drawing or to the top left of the image we drew****
+context.fill()
+context.stroke() //stoke makes the outline of the shape show up because stroke is used for lines (lineto to make it
+//show up on the canvas)****
 //default stroke is black right****
 
 // top center triangle
@@ -92,6 +93,7 @@ context.fill('evenodd') // fills the path, odd overlaps are filled, even overlap
 //for stacking shapes ontop of each other****)
 //so if we have another square on a portion of the two overlapping squares it would only fill that portion right and not the
 //whole whitepsace****
+//so is 0 considered even in JS or just in canvas****
 context.stroke()
 
 // combining arc and lineTo to make a heart
