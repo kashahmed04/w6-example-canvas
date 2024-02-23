@@ -39,6 +39,7 @@ clearButton.addEventListener('click', () => {
 
 fillButton.addEventListener('click', () => {
   // this fills with white, opaque (or substitute a clear color)
+  //what was the difference between fillrect() and fillrect(alpha) on slide 11****
   context.fillStyle = 'rgb(255, 255, 255)'
   context.fillRect(300, 0, 300, 300)
 })
