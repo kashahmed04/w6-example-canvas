@@ -76,7 +76,7 @@ image.src = './assets/squidward.webp' //image gets set line 44 from comments
 
 // drawimage has 3 different overrides (first takes the image data and the x and y coordinate and we put the top left of the image here
 // and draw it and we dont care how big it is** the second is the width and height for how big we want it to be** and the third overload is the
-// sprite engine and we get the x and y of the image source data and we set the width and height for how much we are copying over
+// sprite engine**** and we get the x and y of the image source data and we set the width and height for how much we are copying over
 // and the destination and the width and height of destination (this is for the eyes))**
 
 // img.src is the same as making an img in the html then targetting it in the js**
