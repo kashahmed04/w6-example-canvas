@@ -13,11 +13,14 @@ canvas.height = SIZE
 // like the AudioContext, we have a CanvasRenderingContext2D
 const context = canvas.getContext('2d') as CanvasRenderingContext2D
 
-// solid white fill of the canvas since context is the canvas renderer responsible for showing everything on the screen
+// solid white fill of the canvas since context is the canvas renderer responsible for showing everything on the canvas
 //(yes)
 //we dont use canvas here because it makes the actual canvas itself and does not rednder our drawings (yes)****
 context.fillStyle = 'rgb(255, 255, 255)'
 // draw the white background for the canvas (yes)
+//why is it that when we take this context.fillrect() away it makes the purple color and not make everything black****
+//and why is it that when we put opacity it makes it light purple now when we made the background white in the fillstyle****
+//when we make it 0 why is it purple and not black***
 context.fillRect(0, 0, SIZE, SIZE)
 
 //how does it know to make background purple (html in CSS)
@@ -26,7 +29,8 @@ context.fillRect(0, 0, SIZE, SIZE)
 // But I didn't, to be explicit about what values are being passed to the draw methods.
 // (in other words, making it easier to follow the example without having to math out the values)
 
-//when we are specifying coorindates on the canvas we talk about pixel boundaries (edges of the image we defined right)****
+//when we are specifying coorindates on the canvas we talk about pixel boundaries (edges of the image we defined right
+//or is it the edge of each pixel within the image)****
 //(drawing rectangle in first image because the red line is on the black line and its easy to
 //show pixels to be filled (whole pixels))
 
@@ -37,10 +41,10 @@ context.fillRect(0, 0, SIZE, SIZE)
 //to fix the second image, in the third image if we have a line width of 1 we should have our coordinates in half
 //pixels with the x-axis so when we center the line it falls within the pixels and theres no gray area for blurriness
 
-//for odd numbers if we divide them in half we dont get a whole number of pixels which contribute to bluriness
+//for odd numbers if we divide them in half we dont get a whole number of pixels which contribute to bluriness (the whole numbers)
 //for even numbers it wont do that and we have whole numbers so we can have clearer lines (for the line width)
 
-//why do we divide in half for the kine width when using pixels****
+//we always divide in x in half for the odd line width and leave the whole numbers for the even line width right****
 
 // The first series has odd-width strokes on whole-number pixel coordinates
 context.strokeStyle = 'black'
@@ -158,7 +162,7 @@ context.stroke()
 
 // The fourth series has even-width strokes on 0.5-pixel coordinates
 //this is blurry because even numbers return whole numbers but we are going by .5 incremenets (would it have the gray blurrieness
-//like the lightblue pixels in the second image on the slides for the odd numbers)****
+//like the lightblue pixels in the second image on the slides like the odd numbers)****
 //even numbers go good with whole pixel coorindates and odd numbers go good with 0.05 pixel coorindates****
 //how do we know to change x or y to go the point 5 coorindates or the whole number coordinates (does it matter or do we usually
 //do this with x and the y can be a whole number no matter what)****
