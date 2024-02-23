@@ -7,10 +7,16 @@ import './styles/styles.css'
 //what does it mean it starts off as black transparent pixels I thought it was white for canavs if we draw nothign on it
 //the default is black and transparent and we drew white for the fillstyle so if we dont specify a fillstyle then
 //we get black
+//so when we comment out both fillstyles why does the solid purple not turn black because
+//its part of the canvas and there is no fillstyle anymore****
+//and when I comment out the CSS as well its just black squares on a white background (why is the white on the solid
+//purple squares is it because the purple squares is whatever the whole browser background is (white by default for browser)
+// and it puts it on the canvas and in general for areas we dont specify a color for on the canvas if makes it whatever
+//the web browser color we set it to or the white for the browser by default (why is it not black by default))****
 const SIZE = 600
 const canvas = document.getElementById('canvas') as HTMLCanvasElement
 
-//so basically interpolation takes teh distance and cuts in half each time as it gets closer to the mousem (slides 5-11)**
+//so basically interpolation always takes the distance and cuts in half each time as it gets closer to the mouse (slides 5-11)****
 
 // setting the width and height attributes controls the actual pixel dimensions of the canvas
 canvas.width = SIZE
@@ -50,11 +56,14 @@ context.fillRect(0, SIZE - 10, SIZE, 10) //(bottom bar)
 //the whole canvas starts as white with no transparency but when we
 //draw the actual rectangles with the loop below thats what makes it transparent (yes)
 //the fillstyle is for only the shapes we draw after we assign it a color
-//(same for strokestyle but those are for lines only)(yes)****
-//we can use fillstyle with shapes and text as well****
+//(same for strokestyle but those are for lines only)(yes)
+//we can use fillstyle with shapes and text as well (yes)
 //why do we make it white here if we have purple (purple is defined in the CSS but could we have used it here
-//too or do we usually define color in CSS and only work with white here)****
-context.fillStyle = 'rgba(255, 255, 255, 0.25)'
+//too or do we usually define color in CSS and only work with white here and it would just put the solid
+//color we defined in CSS on the canvas or if we put opacity it will also effect the canvas)****
+context.fillStyle = 'rgba(255, 255, 255, 0.25)' //so basically this gives us a purple transparency because the whole board
+//would be purple then because it has the same color as the browser window****
+//what if we wanted different browser window color but different canvas color would the code still look the same****
 //can make rgb, words, etc. (same for strokestyle and fill right no specific color style we have to put (rgb, hsv, etc.))****
 
 //Drawing writes to pixels, which are then displayed (this means that when we are using canvas its units are in pixels
@@ -69,7 +78,7 @@ const squareSize = (SIZE - 20) / 10 //(we divide by 10 because its a 10x10 board
 //and that remainder)
 for (let x = 0; x < 10; x++) {
   for (let y = 0; y < 10; y++) {
-    //goes down the rows and if the modulo is not equal (0) then we make a transparent square
+    //goes down the rows and if the modulo is not the same for both x and y, then we make a transparent square
     // draw a checkerboard pattern
     if (x % 2 !== y % 2) {
       context.fillRect(
@@ -116,7 +125,7 @@ the context. for anything we draw that goes on the canvas)
 
 CANVAS REFERENCES:
 first link is guidede tour of canvas itself
-the second link is the API links informtion and listing of properties and metods and how to use them as well as examples
+the second link is the API links informtion and listing of properties and methods and how to use them as well as examples
 the third link is a web textbook for canvas and what we can do with canvas
 the last link is a bunch of third party libaries ontop of canvas to make it easier to work with canvas
 
@@ -141,7 +150,7 @@ style to transparent in our case**
 we then make rectangles then we change the color to make the squares transparent**
 
 we dont really have a purple canvas its just white and transparent white but when we change the background of the
-whole screen it changes the canvas**
+whole screen it changes the canvas****
 
 we have a loop that gives us the reectangles to draw them with the starting cororidnates (x,y) and how big the make then (width and height)**
 
