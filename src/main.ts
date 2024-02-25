@@ -19,6 +19,8 @@ const canvas = document.getElementById('canvas') as HTMLCanvasElement
 //so basically interpolation always takes the distance and cuts in half each time as it gets closer to the mouse (slides 5-11) (yes always
 //in halves)
 
+//registerupdate updates the coordinates for us so that its not null and we can update the coordinates in apply coordinates
+
 // setting the width and height attributes controls the actual pixel dimensions of the canvas
 canvas.width = SIZE
 canvas.height = SIZE
