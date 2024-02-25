@@ -16,7 +16,8 @@ import './styles/styles.css'
 const SIZE = 600
 const canvas = document.getElementById('canvas') as HTMLCanvasElement
 
-//so basically interpolation always takes the distance and cuts in half each time as it gets closer to the mouse (slides 5-11)****
+//so basically interpolation always takes the distance and cuts in half each time as it gets closer to the mouse (slides 5-11) (yes always
+//in halves)
 
 // setting the width and height attributes controls the actual pixel dimensions of the canvas
 canvas.width = SIZE
