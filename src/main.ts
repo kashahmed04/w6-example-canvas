@@ -85,7 +85,7 @@ alphaButton.addEventListener('click', () => {
 
 // we have our image we load it and draw it and we have buttons setup and we have click events setup on each of them and clearrect clears it out
 // with black with 1 opactity for the first button (its not black though) (1 is black on the canvas right if nothing is
-//drawn on it but if something is then its not black even though its 1 opacity****
+//drawn on it but if something is then its not black even though its 1 opacity)****
 // the second button makes it white and the third button makes it transparent each time we click**
 
 // */
