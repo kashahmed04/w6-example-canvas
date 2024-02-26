@@ -68,6 +68,11 @@ canvas.addEventListener('mousemove', (event: MouseEvent) => {
   mouse.x = event.offsetX
   mouse.y = event.offsetY
 
+  //how can we not do the interpolation here is it because the interpolation always requires
+  //position.x += (target.x - position.x) * 0.5 and position.y += (target.y - position.y) * 0.5****
+  //and we do += since we are adding it onto the current position we have after subtracting the current
+  //positon from the target****
+
   //this just goes wherever our cursor is (like a cursor) and not following our mouse
 })
 
@@ -81,8 +86,11 @@ clipboard is whole page and green page is the canvas and (0,0) is the top left o
 and the x offset is from left side of the canvas to x point of our mouse position
 and y offset is from top of screen down to y offset of mouse (down is positive)
 
+//when we change our origin does the axis remain the same still (left and up is negative and right and down
+//is potive for the x and y coorindates)****
+
 we have renderer in that is like a loop for each refresh of the canvas and each time the canvas refrehes it*
 
 in the CSS we dont have the arrow but we change it to the circle within the canvas but if we go outside the canvas
 then it turns back to cursor (so basically we do cursor: none in the CSS for the canvas element then we create the circle
-in the JS for following the mouse as we move)(yes)*/
+in the JS for following the mouse as we move)(yes)*****/
