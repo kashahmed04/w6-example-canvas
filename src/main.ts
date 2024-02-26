@@ -23,11 +23,13 @@ context.lineTo(120, 120) //why is there 3 lineto if we have 4 sides for square (
 context.lineTo(120, 60)
 context.closePath() //closes the shape up so we can fill it on the next line within the lines (figures our from where
 //we are to go back to the start)(it will be a straight line to go back even if it looks weird)
-//so basically this goes back to the start from where we started drawing or to the top left of the image we drew****
+//so basically this goes back to the start from where we started drawing or to the top left of the image we drew
 context.fill()
 context.stroke() //stoke makes the outline of the shape show up because stroke is used for lines (lineto to make it
-//show up on the canvas)****
-//default stroke is black right****
+//show up on the canvas)(yes)
+//default stroke is black right (yes)
+
+//the default is white for fill and black for stroke
 
 // top center triangle
 context.fillStyle = 'green'
@@ -71,7 +73,7 @@ context.lineTo(140, 320)
 context.closePath()
 context.fill('nonzero') // fills the path, regardless of overlap (the canvas is the whole
 //canvas so it accounts for eveerything that overlaps)
-//the even odd overrides it for everything that overlaps then****
+//the even odd overrides it for everything that overlaps then
 context.stroke()
 
 context.fillStyle = 'orange'
@@ -90,10 +92,10 @@ context.closePath()
 context.fill('evenodd') // fills the path, odd overlaps are filled, even overlaps are not
 //even layers (2) for the squares so it does not fill in but for odd it would be 1 (canvas is 0) so its filled
 //and a shape ontop of a shape ontop of a shape is 3 so it would be filled (is it like index and it goes from 0 onward
-//for stacking shapes ontop of each other****)
+//for stacking shapes ontop of each other)
 //so if we have another square on a portion of the two overlapping squares it would only fill that portion right and not the
-//whole whitepsace****
-//so is 0 considered even in JS or just in canvas****
+//whole whitepsace
+//so is 0 considered even in JS or just in canvas (0 is technically even)
 context.stroke()
 
 // combining arc and lineTo to make a heart
