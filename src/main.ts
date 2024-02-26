@@ -87,10 +87,9 @@ for (let x = 0; x < 10; x++) {
       context.fillRect(
         //we are shifting everything over by 10 pixels to the right and 10 pixels down
         //and it starts from within the border that way and not inside of the border
-        //how does this know to go onto the correct area down for the next square when we add
-        //by x and by y and multiply by square size (the second set of square size is the width and height to draw
-        //the square which is constant)****
-        10 + x * squareSize,
+
+        10 + x * squareSize, //overall width of the canvas minus the border width divided into 10 squares and we count x from 0 to 9
+        //and y from 0 to 9 nested inside of that
         10 + y * squareSize,
         squareSize,
         squareSize,
