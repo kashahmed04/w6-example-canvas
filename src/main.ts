@@ -21,8 +21,8 @@ image.addEventListener('load', () => {
   //image element from the HTML with document.getelementbyid or a query selector and use that variable here
   //to load it into the canvas specifially for that image)
   //when we do the query selector instead and get the image element itself would we get that element
-  //at the bottom of the script so then we can follow the same process here and load it or how would that work****
-  // draw it small
+  //and we would use that in place of image = new image to image = get elment by id and we dont have to specify
+  //source and the bottom and this method here is for specifically making a new image
   context.drawImage(
     //this is for the first larger image but it starts off huge so we make it small
     image, // source data
@@ -55,16 +55,17 @@ image.addEventListener('load', () => {
 
     //we dont need any variables to store parts of the image right we can just put coorindates in like we did here and
     //it would work right (yes)
-
-    //how to know what the coorindates are was the image siezed to original size then the image was traced out like that****
   )
 })
 
 // set the .src attribute, officially starting the image load
 // make sure to do our source after we load because if we did it before then the image would load first before going to the listener
-// and the image would load and the load event would fire before we started listening for the event (before the image started loading)****
+// and the image would load and the load event would fire before we started listening for the event (before the image started loading)
 //so basiclaly if we put this before the image may not be fully loaded and the event may fire so put this at the end before
-//listening for the event (how does it work like that)****
+//listening for the event
+
+//the image would load too quickly before we have the event listener so we would miss the event so we put it on the bottom here
+//so the event listener loads
 image.src = './assets/squidward.webp' //image gets set line 44 from comments
 
 //CANVAS IMAGES (EXAMPLE 5)(go over)**:
@@ -82,7 +83,10 @@ image.src = './assets/squidward.webp' //image gets set line 44 from comments
 
 // drawimage has 3 different overrides (first takes the image data and the x and y coordinate and we put the top left of the image here
 // and draw it and we dont care how big it is** the second is the width and height for how big we want it to be** and the third overload is the
-// sprite engine**** and we get the x and y of the image source data and we set the width and height for how much we are copying over
+// sprite engine and we get the x and y of the image source data and we set the width and height for how much we are copying over
 // and the destination and the width and height of destination (this is for the eyes))**
+
+//once we draw sections of an image we can have a sprite sheet and we choose which frame to draw over time based
+//on the sprite sheet (we can cut out images for sprite sheet)
 
 // img.src is the same as making an img in the html then targetting it in the js**
