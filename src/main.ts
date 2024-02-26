@@ -22,10 +22,11 @@ image.addEventListener('load', () => {
   context.drawImage(image, 150, 40, 700, 700, 10, 10, 580, 580) //when we are in the event listender load
   //that is there to say we want to draw to draw 10 pixels in and 10 pixels down and if the pixels are 600 for the size
   //we do 580 to make it centered (20 for each side based on the border) (the 10 for the destination coordinstes sre the
-  //border right)****
+  //border right)
   //for the starting x and y coorindates do those also accrount for borders too and how can the image
   //be bigger than 600 since the canvas size is 600 but our width and heght is 700 for the image for the starting
-  //width and height****
+  //width and height (we copy from the actual image for the first 4 coorindates then the last 4 is for the
+  //destination)
 })
 image.src = './assets/squidward.webp'
 
@@ -36,17 +37,18 @@ const alphaButton = document.getElementById('alpha') as HTMLButtonElement
 clearButton.addEventListener('click', () => {
   // clearing sets pixels in a rectangle to black, transparent
   //what does it mean black it's not black on the screen (its setting it back to as if we never drawn it on the canvas)
-  //if something is black that means its just the canvas nothing else****
-  //this is 0 (or 1) opactity because its solid (yes)****
+  //if something is black that means its just the canvas nothing else (yes)
+  //this is 0 (or 1) opactity because its solid (yes)
   //0 is always solid white but as we get more close to 1 its more solid of the color we put as the background or
-  //canvas color****
+  //canvas color(yes))
   context.clearRect(0, 0, 300, 600)
 })
 
 fillButton.addEventListener('click', () => {
   // this fills with white, opaque (or substitute a clear color) (how could we make a clear color do we
-  //just make the opacity 0)****
-  //what was the difference between fillrect() and fillrect(alpha) aplha was just the element we were targetting****
+  //just make the opacity 0)(yes)(transparency is independet of the color so we can have transpart white or black
+  //based on the color)
+  //what was the difference between fillrect() and fillrect(alpha) aplha was just the element we were targetting
   context.fillStyle = 'rgb(255, 255, 255)'
   context.fillRect(300, 0, 300, 300)
 })
@@ -69,6 +71,7 @@ fillButton.addEventListener('click', () => {
 
 alphaButton.addEventListener('click', () => {
   // this fills with white, at 10% transparency (for a fade/ghost effect)
+  //the 0 is more transparent white and the 1 is solid white
   context.fillStyle = 'rgba(255, 255, 255, 0.1)'
   context.fillRect(300, 300, 300, 300)
   //we do fill rect with the alpha button and not the actual alpha value (we are not passing alpha in)
