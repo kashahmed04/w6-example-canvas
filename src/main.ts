@@ -20,6 +20,8 @@ image.addEventListener('load', () => {
   //we load in whatever image we define (if we have multiple images we can just set up a new image() or target an individual
   //image element from the HTML with document.getelementbyid or a query selector and use that variable here
   //to load it into the canvas specifially for that image)
+  //when we do the query selector instead and get the image element itself would we get that element
+  //at the bottom of the script so then we can follow the same process here and load it or how would that work****
   // draw it small
   context.drawImage(
     //this is for the first larger image but it starts off huge so we make it small
@@ -30,11 +32,11 @@ image.addEventListener('load', () => {
     190, // height (if we dont specify width and height then it does the default size)
     //if we make the width or height bigger is that when it would get more pixiliated
 
-    //images always get drawn from the top left (same with everything else) for canavs right (yes)
+    //images always get drawn from the top left (same with everything else)(yes) for canavs right (yes)
   )
 
-  //what does it mean by something taking in overloading (they are fucntion overloads and we can call it with a different number of
-  //parameters)
+  //what does it mean by something taking in overloads (they are fucntion overloads and we can call the same
+  //function with a different number of parameters)
   // draw a subsection of it
   context.drawImage(
     image, // source data
@@ -53,12 +55,16 @@ image.addEventListener('load', () => {
 
     //we dont need any variables to store parts of the image right we can just put coorindates in like we did here and
     //it would work right (yes)
+
+    //how to know what the coorindates are was the image siezed to original size then the image was traced out like that****
   )
 })
 
 // set the .src attribute, officially starting the image load
 // make sure to do our source after we load because if we did it before then the image would load first before going to the listener
-// and the image would load and the load event would fire before we started listening for the event (before the image started loading)
+// and the image would load and the load event would fire before we started listening for the event (before the image started loading)****
+//so basiclaly if we put this before the image may not be fully loaded and the event may fire so put this at the end before
+//listening for the event (how does it work like that)****
 image.src = './assets/squidward.webp' //image gets set line 44 from comments
 
 //CANVAS IMAGES (EXAMPLE 5)(go over)**:
