@@ -84,6 +84,7 @@ context.lineTo(320, 360)
 context.lineTo(320, 300)
 context.closePath()
 
+//context.fillRect(280, 320, 20, 20)
 context.moveTo(280, 320)
 context.lineTo(280, 380)
 context.lineTo(340, 380)
